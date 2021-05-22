@@ -8,7 +8,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 class customer():
 
-    def init(self,Fullname,Password,confirmPassword,Phonenumber,email,Gender):
+    def __init__(self,Fullname,Password,confirmPassword,Phonenumber,email,Gender):
         self.Fullname=Fullname
         self.Password=Password
         self.confirmPassword=confirmPassword
