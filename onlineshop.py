@@ -1,8 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-
-
-#class loginpage(object):
 class person():
     def __init__(self, FirstName, LastName, gender, address, phonnumber, email)
         self.__FirstName = FirstName
@@ -66,23 +63,44 @@ class person():
         raise Error('the value of gender should be [male or female] ')
         self.__gender = gender
     
+#import person
+#class customer(person):
+    #def __init__(self,Fullname,Password,confirmPassword,Phonenumber,email,Gender):
+        #self.Fullname=Fullname
+        #self.Password=Password
+        #self.confirmPassword=confirmPassword
+        #self.Phonnumber=Phonenumber
+        #self.email=email
+        #self.Gender=Gender
 
-class customer():
-    def __init__(self,Fullname,Password,confirmPassword,Phonenumber,email,Gender):
-        self.Fullname=Fullname
-        self.Password=Password
-        self.confirmPassword=confirmPassword
-        self.Phonnumber=Phonenumber
-        self.email=email
-        self.Gender=Gender
+    #def fullname(self):
+    #    return self.Fullname
+    #def password(self):
+    #    return self.Password
+    #def confirm(self):
+    #    return self.confirmPassword
+    #def phonenumber(self):
+    #    return self.Phonnumber
+    #def email(self):
+    #    return self.email
+    #def gender(self):
+    #    return self.Gender
 
+class Item():
+    def __init__(self, name, description, price, code):
+        self.name = name
+        self.description = description
+        self.price = price
+        self.code = code
 
+    def name(self):
+        return self.name
 
+    def description(self):
+        return self.description
 
+    def price(self):
+        return self.price
 
-
-#class mainpage(object):
-
-
-
-#class CustomerRegistration(object):
+    def code(self):
+        return self.code
