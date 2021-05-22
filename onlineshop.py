@@ -129,6 +129,10 @@ class ShoppingBasket():
           
     # update the quantity of an item from the shopping basket  
     def updateItem(self,item,quantity):
+        if quantity > 0: 
+            self.items[item] = quantity
+        else:
+            self.removeItem(item)
 
   
     # view/list the content of the basket.
