@@ -113,6 +113,14 @@ class ShoppingBasket():
   
     # add an item to the shopping basket  
     def addItem(self,item,quantity=1):
+        if quantity > 0: 
+            #Check if the item is already in the shopping basket
+            if item in self.items:
+                self.items[item] += quantity
+            else: 
+                self.items[item] = quantity
+        else:
+            print("Invalid operation - Quantity must be a positive number!")
 
       
     # remove an item from the shopping basket (or reduce it's quantity)  
