@@ -104,3 +104,35 @@ class Item():
 
     def code(self):
         return self.code
+
+import Item
+class ShoppingBasket():
+    def __init__(self):
+        self.items = {} #A dictionary of all the items in the shopping basket: {item:quantity} 
+        self.checkout = False
+  
+    # add an item to the shopping basket  
+    def addItem(self,item,quantity=1):
+
+      
+    # remove an item from the shopping basket (or reduce it's quantity)  
+    def removeItem(self,item,quantity=0):
+
+          
+    # update the quantity of an item from the shopping basket  
+    def updateItem(self,item,quantity):
+
+  
+    # view/list the content of the basket.
+    def view(self):
+
+  
+    # calculate the total cost of the basket.
+    def getTotalCost(self):
+
+    
+    # empty the content of the basket
+    def reset(self):
+    
+    # return whether the basket is empty or not:
+    def isEmpty(self):
