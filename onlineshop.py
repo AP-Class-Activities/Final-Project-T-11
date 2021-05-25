@@ -125,7 +125,17 @@ class ShoppingBasket():
       
     # remove an item from the shopping basket (or reduce it's quantity)  
     def removeItem(self,item,quantity=0):
-
+        if quantity<=0: 
+            #Remove the item
+            self.items.pop(item, None)
+        else:
+            if item in self.items:
+                if quantity<self.items[item]:
+                    #Reduce the required quantity for this item
+                    self.items[item] -= quantity
+                else:
+                    #Remove the item
+                    self.items.pop(item, None)
           
     # update the quantity of an item from the shopping basket  
     def updateItem(self,item,quantity):
