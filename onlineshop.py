@@ -151,10 +151,18 @@ class ShoppingBasket():
   
     # calculate the total cost of the basket.
     def getTotalCost(self):
+        totalCost = 0
+        for item in self.items:
+            quantity = self.items[item]
+            cost = quantity * item.price
+            totalCost += cost
+        return totalCost
 
     
     # empty the content of the basket
     def reset(self):
+        self.items = {}
     
     # return whether the basket is empty or not:
     def isEmpty(self):
+        return len(self.items)==0
