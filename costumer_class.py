@@ -23,7 +23,7 @@ class coustumer:
         self.cart = dict()
         self.favorites = list()
         self.last_shopping = list()
-        Costumer.costumers[self.costumer_id] = [name, last_name, phone_number, email]
+        Costumer.costumers[self.costumer_id] = [name, last_name, address,phone_number, email]
           
 
         
