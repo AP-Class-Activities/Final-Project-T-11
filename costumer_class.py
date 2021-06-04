@@ -13,8 +13,8 @@ class coustumer:
         self.phone_number = phone_number  # assigning costumer's phone number
         self.email = email  # assigning costumer's email
         random_id = random.randint(100000,1000000)# generating random 6 digit id number
-        flag = True
-        while flag is True:
+        flag = True# a flag to keep while loop going until we have a unique costumer id
+        while flag is True:# assigning a unique costumer id to the new seller
           if random_id not in Costumer.costumers.keys():
              self.costumer_id = "CU" + str(random_id)
              flag = False
