@@ -7,12 +7,12 @@ class coustumer:
     store_inventory = dict()
 
     def __init__(self, name, last_name, address ,phone_number=None, email=None):
-        self.name = name 
-        self.last_name = last_name
-        self.address = address
-        self.phone_number = phone_number 
-        self.email = email 
-        random_id = random.randint(100000,1000000)
+        self.name = name  # assigning costumer's name
+        self.last_name = last_name # assigning costumer's last_name
+        self.address = address # assigning costumer's address
+        self.phone_number = phone_number  # assigning costumer's phone number
+        self.email = email  # assigning costumer's email
+        random_id = random.randint(100000,1000000)# generating random 6 digit id number
         flag = True
         while flag is True:
           if random_id not in Costumer.costumers.keys():
