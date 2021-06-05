@@ -6,7 +6,7 @@ class coustumer:
     coustumer = dict()
     store_inventory = dict()
 
-    def __init__(self, name, last_name, address ,phone_number=None, email=None):
+    def __init__(self, name, last_name, address ,phone_number, email:
         self.name = name  # assigning costumer's name
         self.last_name = last_name # assigning costumer's last_name
         self.address = address # assigning costumer's address
