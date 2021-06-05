@@ -44,6 +44,10 @@ class Seller:
                                            self.phone_number, self.email, self.rates, self.sales, self.suspension,
                                            self.distance_to_inventory, self.products, self.profit, self.income,
                                            self.cost]
+        # if gets rejected
+        except PermissionError:
+            print("This seller was not approved by the system admin.")
+
                         
     def historical_sales(self, item, date, costumer_id, buying_price, selling_price, cost):
         profit = selling_price - buying_price
