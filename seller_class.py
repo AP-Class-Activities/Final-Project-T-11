@@ -7,28 +7,44 @@ class Seller:
     sellers_rates = dict.fromkeys(sellers.keys(), [])
     suspended_sellers = list()
 
-    def __init__(self, name, last_name, distance_to_inventory, phone_number=None, email=None):
-        self.name = name
-        self.last_name = last_name
-        self.phone_number = phone_number
-        self.email = email
-        self.rate = sum(Seller.sellers_rates[self.seller_id]) / len(Seller.sellers_rates[self.seller_id])
-        random_id = random.randint(100000, 1000000)
-        flag = True
-        while flag is True:
-            if random_id not in Seller.sellers.keys():
-                self.seller_id = "CU" + str(random_id)
-                flag = False
-            else:
-                random_id = random.randint(100000, 1000000)
-                flag = True
-        self.balance = 0
-        self.distance_to_inventory = distance_to_inventory
-        self.sales = dict()
-        self.suspension = False
-        self.list_of_orders = []
-        self.products = []
+    def __init__(self, name, last_name, distance_to_inventory, address, phone_number, email):
 
+        # check if store approves this new seller or not
+        try:
+            # calling the store system admin to accept or reject this seller request
+            if Store.approve_seller([name, last_name, distance_to_inventory, address, phone_number, email]) is True:
+                self.name = name  # assigning it's first name
+                self.last_name = last_name   # assigning it's last name
+                self.phone_number = phone_number  # assigning it's phone number
+                self.email = email  # assigning it's email address
+                self.rates = dict()  # assigning empty dictionary of rates to be filled by costumers opinions
+                random_id = random.randint(100000, 1000000)  # generating random 6 digit id number
+                '''hence the generated id is random, it is possible that they may coincide, so to avoid such situations
+                we use this while loop to check for existing duplicates'''
+                flag = True  # a flag to keep while loop going until we have a unique seller id
+                while flag is True:  # assigning a unique seller id to the new seller
+                    if random_id not in sellers.keys():  # checking existing sellers to find duplicate seller id
+                        self.seller_id = "SL" + str(random_id)  # no duplicates were found, so we assign seller id
+                        flag = False  # now that the id is successfully assigned, we change the flag to stop while loop
+                    else:  # duplicate id were found
+                        random_id = random.randint(100000, 1000000)  # generating a new random seller id
+                self.balance = 0  # seller initial account balance
+                self.distance_to_inventory = distance_to_inventory  # time distance to store  from seller location
+                self.sales = dict()  # all seller sales by date, the format of the dictionary is = {date: sale details}
+                self.suspension = False  # the suspension status
+                self.list_of_orders = []  # assigning empty list of orders to the newly added seller
+                self.products = []  # empty product list to be filled by costumers, entries are tuples: (quantity, type)
+                self.address = address  # assigning it's address
+                self.profit = 0
+                self.cost = 0
+                self.income = 0
+                self.total_sales_counts = 0
+                # adding the new seller to the dictionary so that we can add them to database later
+                sellers[self.seller_id] = [self.name, self.last_name, self.address, self.list_of_orders, self.balance,
+                                           self.phone_number, self.email, self.rates, self.sales, self.suspension,
+                                           self.distance_to_inventory, self.products, self.profit, self.income,
+                                           self.cost]
+                        
     def historical_sales(self, item, date, costumer_id, buying_price, selling_price, cost):
         profit = selling_price - buying_price
         income = selling_price
