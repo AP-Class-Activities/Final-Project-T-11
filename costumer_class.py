@@ -55,14 +55,9 @@ class Costumer:
     def charge_credit(self, amount):
         self.credit = self.credit + amount  # increasing costumer credit by the amount which he/she deposited.
 
-    # method to add item to the costumer's cart(shopping basket) from an specific seller
-    def add_to_cart(self, item, seller_id, price, quantity):
-        try:  # check if store approves this order or not
-            if Store.approve_order(item, seller_id, self.costumer_id, price, quantity) is True:
-                self.cart[item] = seller_id, price, quantity  # order was approved so we add it to cart(shopping basket)
-        except PermissionError:  # order was not approved.
-            print("order was declined by the system administrator!")
-
+    def add_to_cart(self, item, seller_id, price):
+        self.cart[item] = seller_id, price
+        
     # method to add an item to costumer's favorites list
     def add_to_favorites(self, item):
         self.favorites.append(item)
