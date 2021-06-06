@@ -71,6 +71,19 @@ class coustumer:
         self.favorites.remove(item)
 
    
-
+# method to pay for the items that costumer is willing to buy
+    def pay(self, gift_code=None):
+        total_fee = 0  # a variable to store the amount of money that costumer should pay for it's shopping
+        # adding products prices to the invoice
+        for order in self.cart.values():  # iterating over costumer's cart(shopping basket)
+            total_fee += order[1]  # adding prices
+        if gift_code is not None:  # check if a gift code is entered or not
+            for product in self.cart.keys():  # iterating over purchased items
+                gift_card_validity = is_gift_card_valid(gift_code, self.costumer_id, product)  # validity of gift card
+                if gift_card_validity is True:  # gift card is valid
+                    # decrease the costumer fee relative to the gift card off percentage and product price
+                    total_fee -= self.cart[product][1] * gift_cards[product][3]
+        if total_fee > self.credit:  # checking if costumer have enough money to pay for his card(shopping basket)
+            return "sorry, you have to increase your balance by: " + str(total_fee - self.credit) + "$"
 
         
