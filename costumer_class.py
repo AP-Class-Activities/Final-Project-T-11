@@ -1,10 +1,24 @@
+import datetime
 import random 
-from Seller_Class import Seller
+products = dict()
+coustumer = dict()
+store_cash_desk = dict()
+gift_cards = dict()
 
+def is_gift_card_valid(code, costumer_id, product):
+    date_check = False
+    if datetime.date.today() < gift_cards[code][0]:
+        date_check = True
+    costumer_check = False
+    product_check = False
+    for detail in gift_cards.values():
+        if costumer_id in detail[1].keys():
+            costumer_check = True
+        if product in detail[2]:
+            product_check = True
+    return date_check and costumer_check and product_check  
 
 class coustumer:
-    coustumer = dict()
-    store_inventory = dict()
 
     def __init__(self, name, last_name, address ,phone_number, email:
         self.name = name  # assigning costumer's name
@@ -27,39 +41,36 @@ class coustumer:
         self.favorites = list() # costumer's favorites lists
         self.last_shopping = list()  # costumer's historical shopping details
          # adding the new costumer to the dictionary so that we can add them to database later
-        Costumer.costumers[self.costumer_id] = [name, last_name,address , phone_number, email]
+        costumers[self.costumer_id] = [name, last_name, address, phone_number, email, self.credit, self.cart,
+                                       self.favorites, self.last_shopping]
 
+        # static method to list all products in the store for the costumer
          @staticmethod
     def list_stocks():
-        for goods in Costumer.store_inventory.keys():
-            yield str(goods) + " : " + str(Costumer.store_inventory[goods])
+        for goods in products.keys(): #iterating and showing all of the products
+            yield str(goods) + " : " + str(products[goods])
 
+        # method to charge balance of the costumer
     def charge_credit(self, amount):
-        self.credit = self.credit + amount
+        self.credit = self.credit + amount #increasing costumer credit by the amount which he/she deposited
 
-    def add_to_cart(self, item, seller_id, price):
-        self.cart[item] = seller_id, price
+        # method to add item to the costumer's cart(shopping basket) from an specific seller
+    def add_to_cart(self, item, seller_id, price, quantity):
+        try:  # check if store approves this order or not
+            if Store.approve_order(item, seller_id, self.costumer_id, price, quantity) is True:
+                self.cart[item] = seller_id, price, quantity  # order was approved so we add it to cart(shopping basket)
+        except PermissionError:  # order was not approved.
+            print("order was declined by the system administrator!")
 
+        # method to add an item to costumer's favorites list
     def add_to_favorites(self, item):
         self.favorites.append(item)
 
-    def pay(self):
-        total_fee = 0
-        for order in self.cart.values():
-            total_fee += order[1]
-        if total_fee > self.credit:
-            return "sorry, you have to increase your balance by: " + str(total_fee - self.credit) + "$"
-        else:
-            self.credit = self.credit - total_fee
-            self.last_shopping.append(self.cart)
-            self.cart = dict()
-            return "thank you for your shopping."
+         # method to remove an item from costumer's favorites list
+    def remove_favorites(self, item):
+        self.favorites.remove(item)
 
-    @staticmethod
-    def rate(seller_id, rating):
-        int(input("Please rate the seller from 1 to 5:"))
-        Seller.sellers_rates[seller_id].append(rating)
+   
 
-          
 
         
