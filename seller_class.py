@@ -83,7 +83,7 @@ class Seller:
         self.list_of_orders.append(costumer_order)
 
     def withdraw(self, amount):
-        self.balance = self.balance - amount
+        self.balance = self.balance + amount
 
     def seller_products(self, product, quantity):
         self.products.append((product, quantity))
