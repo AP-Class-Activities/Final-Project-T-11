@@ -59,7 +59,7 @@ class Costumer:
 
     def add_to_cart(self, item, seller_id, price):
         self.cart[item] = seller_id, price
-        
+
     # method to add an item to costumer's favorites list
     def add_to_favorites(self, item):
         self.favorites.append(item)
