@@ -81,21 +81,3 @@ class Costumer:
                     total_fee -= self.cart[product][1] * gift_cards[gift_code][3]
         if total_fee > self.credit:  # checking if costumer have enough money to pay for his card(shopping basket)
             return "sorry, you have to increase your balance by: " + str(total_fee - self.credit) + "$"
-        else:  # it has enough money so:
-            self.credit = self.credit - total_fee  # reducing the costumer's shopping fees from it's credit
-            self.last_shopping.append(self.cart)  # adding user cart(shopping basket) to it's historical shopping data
-            for product, details in self.cart:  # adding each seller sales to the history of store transactions
-                if details[0] not in store_cash_desk.keys():  # check if a seller is present in the dictionary or not
-                    '''according to add_to_cart method the first item in value is seller id the second is price and the 
-                    third is it's quantity. so in order to construct the ledger in form of {seller: credit_to_pay}
-                    we have to set the seller id as the key and the price of the product multiplied by it's quantity 
-                    that the costumer wants to buy as the value.'''
-                    store_cash_desk[details[0]] = details[1] * details[2]
-                else:  # seller does exist in the transactions history
-                    # so we only have to increase it's credit by the amount that the costumer is buying
-                    store_cash_desk[details[0]] += details[1] * details[2]
-            # reducing the quantity of the product by the amount which costumer have bought
-            for product in self.cart.keys():  # iterating over items that costumers have bought
-                products[product][-1] -= self.cart[product][-1]  # reducing the quantity of product in inventory
-            self.cart = dict()  # resetting costumer cart to be empty for next shopping
-            return "thank you for your shopping."
