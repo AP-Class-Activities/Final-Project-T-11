@@ -37,3 +37,13 @@ class Store:
         self.website_url = website_url
         self.telephone_number = telephone_number
 
+# method to approve a seller registration request
+    @staticmethod
+    def approve_seller(name, last_name, distance_to_inventory, address, phone_number, email):
+        approval = input("Do you approve a seller with following details: type yes or no \n"
+                         "name: {}, last name: {}, distance to inventory: {}, address: {}, phone number: {},"
+                         " email: {}".format(name, last_name, distance_to_inventory, address, phone_number, email))
+        if approval.lower() == "yes":
+            return True
+        else:
+            raise PermissionError
