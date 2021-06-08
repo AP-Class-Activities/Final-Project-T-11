@@ -81,3 +81,16 @@ class Costumer:
                     total_fee -= self.cart[product][1] * gift_cards[gift_code][3]
         if total_fee > self.credit:  # checking if costumer have enough money to pay for his card(shopping basket)
             return "sorry, you have to increase your balance by: " + str(total_fee - self.credit) + "$"
+
+    # method to rate a seller
+    def rate(self, seller_id):
+        costumer_rate = int(input("Please rate the seller from -5 to 5:"))  # taking the seller's rate from costumer
+        # according to the Seller class _init_ method is stored in it's 7th position so the index is 7.
+        sellers[seller_id][7][self.costumer_id] = costumer_rate  # adding costumer rate to the seller's rating records.
+
+    # method to write a comment for a product
+    def comment(self, product_name):
+        costumer_comment = input("Please write your comment about the " + product_name)
+        # according to the Product class _init_ method is stored in it's 3th position so the index is 3.
+        # adding costumer comment to the product's comments records.
+        products[product_name][3][self.costumer_id] = costumer_comment
