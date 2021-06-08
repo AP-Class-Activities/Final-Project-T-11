@@ -1,8 +1,10 @@
 import random
 
 class products:
-    def __init__(self, name, color, size, price, quantity):
+    def __init__(self, name, color, price, quantity):
         self.name = name #name of products
+        self.price = price
+        self.quantity = quantity
 
         random_id = random.randint(100000, 1000000)  # generating random 6 digit id number
         '''hence the generated id is random, it is possible that they may coincide, so to avoid such si
@@ -18,13 +20,13 @@ class products:
         if color not in ['blue', 'black', 'red', 'yellow', 'white']:
             raise Error('the value of color should be [blue, black, red, yellow and white] ')
         self.color = color # Available colors for a product
-
-
-
-
-
-
-
+        
+        def get_price(self, number_to_be_bought):
+            if number_to_be_bought > quantity:
+                return Error("Your purchase is more than the number available!")
+            else:
+                return price * number_to_be_bought
+        
 
 
 class Store:
