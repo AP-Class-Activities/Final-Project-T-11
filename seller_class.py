@@ -1,11 +1,11 @@
 import datetime
 import random
+sellers = dict()
+sellers_rates = dict.fromkeys(sellers.keys(), [])
+suspended_sellers = list()
 
 
 class Seller:
-    sellers = dict()
-    sellers_rates = dict.fromkeys(sellers.keys(), [])
-    suspended_sellers = list()
 
     def __init__(self, name, last_name, distance_to_inventory, address, phone_number, email):
 
@@ -48,43 +48,52 @@ class Seller:
         except PermissionError:
             print("This seller was not approved by the system admin.")
 
-                        
-    def historical_sales(self, item, date, costumer_id, buying_price, selling_price, cost):
-        profit = selling_price - buying_price
-        income = selling_price
-        self.sales[date] = [item, costumer_id, buying_price, selling_price, profit, cost, income]
+    # method to generate sales records by time
+    def historical_sales(self, item, quantity, date, costumer_id, buying_price, selling_price, cost):
+        profits = (selling_price - buying_price) * quantity
+        incomes = selling_price * quantity
+        self.profit = profits  # updating profits amount
+        self.income = incomes  # updating incomes amount
+        self.cost += cost  # accumulating costs
+        # records will be saved in a dictionary by below format:
+        self.sales[date] = [item, quantity, costumer_id, buying_price, selling_price, profits, self.cost, incomes]
 
-    def statistics(self):
-        time_frame = input("please enter your time frame, enter All if you want your whole historical data: ")
+    # method to generate historical sale data in an arbitrary timeframe
+    def statistics(self, time_frame):  # have in mind that time_frame should either be an integer or "all"
         results = []
         for date in self.sales.keys():
-            if time_frame.isdigit() is True:
+            if time_frame.isdigit() is True:  # check if time_frame is a number or the whole time is wanted
+                # now we filter the sales which happened between today and time_frame days ago
                 if date >= datetime.date.today() - datetime.timedelta(int(time_frame)):
-                    results.append(self.sales[date])
-            else:
-                results.append(self.sales[date])
+                    results.append(self.sales[date])  # appending filtered sales
+            else:  # time_frame was "all" so we enter every sale record
+                results.append(self.sales[date])  # appending every sale record
         time_frame_profits = 0
         time_frame_costs = 0
         time_frame_incomes = 0
         time_frame_sales_count = len(results)
         for i in results:
-            time_frame_profits += i[4]
-            time_frame_costs += i[5]
-            time_frame_incomes += i[6]
+            time_frame_profits += i[5]  # updating profits amount
+            time_frame_costs += i[6]  # updating costs amount
+            time_frame_incomes += i[7]  # updating incomes amount
         return [time_frame_profits, time_frame_incomes, time_frame_costs, time_frame_sales_count]
 
+    # method to suspend a seller if it's negative feedbacks exceeds a certain amount, limit can be changed arbitrarily
     def suspend(self, limit):
-        count_of_negative_feedbacks = len(list(filter(lambda i: i < 0, Seller.sellers_rates)))
-        if count_of_negative_feedbacks > limit:
-            self.suspension = True
-            Seller.suspended_sellers.append(self.seller_id)
+        # filtering negative feedbacks from the seller's rating list
+        count_of_negative_feedbacks = len(list(filter(lambda i: i < 0, sellers[self.seller_id][7])))
+        if count_of_negative_feedbacks > limit:  # if negative feedbacks pass over a certain amount we suspend seller
+            self.suspension = True  # seller suspended
+            suspended_sellers.append(self.seller_id)
 
+    # method to list the ongoing costumers orders for the seller
     def list_of_orders(self, costumer_order):
         self.list_of_orders.append(costumer_order)
+
 
     def withdraw(self, amount):
         self.balance = self.balance - amount
 
-    def seller_products(self, product, quantity):
-        self.products.append((product, quantity))
+
+
 
