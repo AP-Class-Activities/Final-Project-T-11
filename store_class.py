@@ -34,6 +34,17 @@ class Store:
         else:
             raise PermissionError  
 
+     # method to approve a costumer order request
+    @staticmethod
+    def approve_order(item, seller_id, costumer_id, price, quantity):
+        approval = input("Do you approve an order with following details: type yes or no \n"
+                         "item name: {}, quantity: {}, seller id: {}, costumer id: {}," 
+                         "unit price: {}".format(item, quantity, seller_id, costumer_id, price))
+        if approval.lower() == "yes":
+            return True
+        else:
+            raise PermissionError        
+
     # method to remove a specific costumer
     @staticmethod
     def remove_costumer(costumer_id):
@@ -46,10 +57,10 @@ class Store:
 
 class Product:
 
-    def __init__(self, product, quantity, product_id, sellers_id, price):
+    def __init__(self, product, quantity, product_id, sellers_id, price,color):
 
         # to check if store approves this product to be listed on it's catalogue or not
-        if Store.approve_product([product, quantity, product_id, sellers_id, price]) is True:
+        if Store.approve_product([product, quantity, product_id, sellers_id, price,color]) is True:
 
             # to check if a product is not available in the store by another seller
             if product not in products.keys():
@@ -58,10 +69,11 @@ class Product:
                 self.product_id = "PR" + str(product_id)  # assigning product id
                 self.sellers_id = [sellers_id]  # assigning seller id
                 self.price = price  # assigning it's price
+                self.color = color # assigning color
                 self.comments = dict()  # empty dictionary of comments to be filled by costumers opinions
                 self.quantity = quantity  # assigning product quantity
                 # adding new product to the dictionary of all products to be inserted to database later in below format:
-                products[self.product] = [self.product_id, self.sellers_id, self.price, self.comments, quantity]
+                products[self.product] = [self.product_id, self.sellers_id, self.price, self.comments, quantity,color]
 
             # if it is available then:
             else:
@@ -72,9 +84,9 @@ class Product:
         else:
             raise PermissionError
 
-       # if color not in ['blue', 'black', 'red', 'yellow', 'white']:
-           # raise Error('the value of color should be [blue, black, red, yellow and white] ')
-        #self.color = color # Available colors for a product###
+        if color not in ['blue', 'black', 'red', 'yellow', 'white']:
+            raise Error('the value of color should be [blue, black, red, yellow and white] ')
+        self.color = color # Available colors for a product###
         
         #def get_price(self, number_to_be_bought):
            # if number_to_be_bought > quantity:
