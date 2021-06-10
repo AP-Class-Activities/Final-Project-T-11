@@ -82,7 +82,6 @@ class Costumer:
                     total_fee -= self.cart[product][1] * gift_cards[gift_code][3]
         if total_fee > self.credit:  # checking if costumer have enough money to pay for his card(shopping basket)
             return "sorry, you have to increase your balance by: " + str(total_fee - self.credit) + "$"
-
         else:  # it has enough money so:
             self.credit = self.credit - total_fee  # reducing the costumer's shopping fees from it's credit
             self.last_shopping.append(self.cart)  # adding user cart(shopping basket) to it's historical shopping data
@@ -101,7 +100,6 @@ class Costumer:
                 products[product][-1] -= self.cart[product][-1]  # reducing the quantity of product in inventory
             self.cart = dict()  # resetting costumer cart to be empty for next shopping
             return "thank you for your shopping."
-
 
     # method to rate a seller
     def rate(self, seller_id):
