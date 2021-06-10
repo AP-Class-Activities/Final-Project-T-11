@@ -1,7 +1,6 @@
 import datetime
 import random
 sellers = dict()
-sellers_rates = dict.fromkeys(sellers.keys(), [])
 suspended_sellers = list()
 
 
