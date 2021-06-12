@@ -23,12 +23,68 @@ def is_gift_card_valid(code, costumer_id, product):
 
 class Costumer:
 
-    def __init__(self, name, last_name, address, phone_number, email=None):
-        self.name = name  # assigning costumer's name
-        self.last_name = last_name  # assigning costumer's last_name
-        self.address = address # assigning customer's address
-        self.phone_number = phone_number  # assigning costumer's phone number
-        self.email = email  # assigning costumer's email
+    def __init__(self, name, last_name, address, phone_number, email=None,sex,password):
+        self.__name = name  # assigning costumer's name
+        self.__last_name = last_name  # assigning costumer's last_name
+        self.__address = address # assigning customer's address
+        self.__phone_number = phone_number  # assigning costumer's phone number
+        self.__email = email  # assigning costumer's email
+        self.__sex = sex
+        self.__password = password
+        if sex not in ['male', 'female']: 
+            raise ValueError('the value of sex should be [male or female] ')
+        self.__sex = sex
+        # setter and getter
+        @property
+        def name(self): 
+            return self.__name
+
+        @name.setter
+        def name(self,value): 
+            self.__name = value
+        @property
+        def last_name(self): 
+            return self.__last_name
+
+        @last_name.setter
+        def last_name(self,value): 
+            self.__last_name = value
+        @property
+        def address(self): 
+            return self.__address
+
+        @adress.setter
+        def address(self,value): 
+            self.__address = value
+        @property
+        def phone_number(self): 
+            return self.__phone
+
+        @phone.setter
+        def phone_number(self,value): 
+            self.__phone_number = value
+        @property
+        def email(self): 
+            return self.__email
+
+        @email.setter
+        def email(self,value): 
+            self.__email = value
+        @property
+        def sex(self): 
+            return self.__sex
+        @sex.setter
+        def sex(self,value): 
+            if value not in ['male', 'female']: 
+               raise ValueError('the value of sex should be [male or female] ')
+            self.__sex = value
+        @property
+        def password(self): 
+            self.__password
+
+        @password.setter
+        def password(self,value): 
+            self.__password = value
         random_id = random.randint(100000, 1000000)  # generating random 6 digit id number
         '''hence the generated id is random, it is possible that they may coincide, so to avoid such situations we use
          this while loop to check for existing duplicates'''
@@ -44,7 +100,7 @@ class Costumer:
         self.favorites = list()  # costumer's favorites lists
         self.last_shopping = list()  # costumer's historical shopping details
         # adding the new costumer to the dictionary so that we can add them to database later
-        costumers[self.costumer_id] = [name, last_name, address, phone_number, email, self.credit, self.cart,
+        costumers[self.costumer_id] = [name, last_name, address, phone_number, email,sex,password, self.credit, self.cart,
                                        self.favorites, self.last_shopping]
 
     # static method to list all products in the store for the costumer
@@ -112,4 +168,11 @@ class Costumer:
         costumer_comment = input("Please write your comment about the " + product_name)
         # according to the Product class _init_ method is stored in it's 3th position so the index is 3.
         # adding costumer comment to the product's comments records.
+<<<<<<< Updated upstream
         products[product_name][3][self.costumer_id] = costumer_comment
+=======
+        products[product_name][3][self.costumer_id] = costumer_comment
+        def __str__(self): 
+        return 'name: {}   last_name: {} {}    address: {}   phone_number: {}   email: {}   sex: {}    password: {}'\
+            .format(self.name,self.last_name, self.address, self.phone_number, self.email, self.sex, self.password)
+>>>>>>> Stashed changes

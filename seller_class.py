@@ -6,16 +6,61 @@ suspended_sellers = list()
 
 class Seller:
 
-    def __init__(self, name, last_name, distance_to_inventory, address, phone_number, email):
+    def __init__(self, name, last_name, distance_to_inventory, address, phone_number, email,password):
 
         # check if store approves this new seller or not
         try:
             # calling the store system admin to accept or reject this seller request
-            if Store.approve_seller([name, last_name, distance_to_inventory, address, phone_number, email]) is True:
-                self.name = name  # assigning it's first name
-                self.last_name = last_name   # assigning it's last name
-                self.phone_number = phone_number  # assigning it's phone number
-                self.email = email  # assigning it's email address
+            if Store.approve_seller([name, last_name, distance_to_inventory, address, phone_number, email,password]) is True:
+                self.__name = name  # assigning it's first name
+                self.__last_name = last_name   # assigning it's last name
+                self.__phone_number = phone_number  # assigning it's phone number
+                self.__email = email  # assigning it's email address
+                self.password.__=password #assiging it's password
+                 # setter and getter
+                @property
+                def name(self): 
+                   return self.__name
+
+                @name.setter
+                def name(self,value): 
+                   self.__name = value
+                @property
+                def last_name(self): 
+                    return self.__last_name
+
+                @last_name.setter
+                def last_name(self,value): 
+                    self.__last_name = value
+                @property
+                 def address(self): 
+                    return self.__address
+
+                @adress.setter
+                def address(self,value): 
+                    self.__address = value
+                @property
+                def phone_number(self): 
+                    return self.__phone_number
+
+                @phone_number.setter
+                def phone_number(self,value): 
+                    self.__phone_number = value
+                @property
+                def email(self): 
+                    return self.__email
+
+                @email.setter
+                def email(self,value): 
+                   self.__email = value
+                @property
+                def password(self): 
+                   self.__password
+
+                @password.setter
+                def password(self,value): 
+                    self.__password = value
+            
                 self.rates = dict()  # assigning empty dictionary of rates to be filled by costumers opinions
                 random_id = random.randint(100000, 1000000)  # generating random 6 digit id number
                 '''hence the generated id is random, it is possible that they may coincide, so to avoid such situations

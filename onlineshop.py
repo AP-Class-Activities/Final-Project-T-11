@@ -1,16 +1,13 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 class person():
-    def __init__(self, FirstName, LastName, gender, address, phonnumber, email)
+    def __init__(self, FirstName, LastName, gender, address, phonnumber, email,password)
         self.__FirstName = FirstName
         self.__LastName = LastName
         self.__Address = Address
         self.__Phonnumber = Phonnumber
         self.__Email = Email
-
-        if gender not in ['male', 'female']: 
-            raise Error('the value of gender should be [male or female] ')
-        self.__gender = gender
+        self.__password=password
 
     #setters and getters
     @property
@@ -61,8 +58,13 @@ class person():
     def gender(self,gender): 
     if gender not in ['male', 'female']: 
         raise Error('the value of gender should be [male or female] ')
-        self.__gender = gender
-    
+    self.__gender = gender
+    @property
+    def password(self):
+        return self.__password
+    @password.setter
+    def password(self,password):
+        self.__password
 #import person
 #class customer(person):
     #def __init__(self,Fullname,Password,confirmPassword,Phonenumber,email,Gender):
