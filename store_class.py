@@ -53,7 +53,39 @@ class Store:
     # method to remove a specific seller
     @staticmethod
     def remove_seller(seller_id):
-        del sellers[seller_id]            
+        del sellers[seller_id]      
+
+    # method to see specific seller details
+    @staticmethod
+    def seller_details(seller_id):
+        # below results is a list of form [name, last name, address, list of orders, balance, phone number,
+        # email, rates, sales, suspension, distance to inventory, products] and the indices are
+        # corresponding to each of these item
+        seller_details = sellers[seller_id]
+        print("current status and details of the seller is: \n",
+              "name: {}\n".format(seller_details[0]),
+              "last name: {}\n".format([seller_details[1]]),
+              "address: {}\n".format(seller_details[2]),
+              "phone: {}\n".format(seller_details[5]),
+              "email: {}\n".format(seller_details[6]),
+              "suspension status: {}\n".format(seller_details[9]),
+              "balance: {}\n".format(seller_details[4]),
+              "with-held credit: {}\n".format(store_cash_desk[seller_id]),
+              "average rate: {} and detailed ratings is: {}\n".format(sum(seller_details[7])/len(seller_details[7]),
+                                                                      seller_details[7]),
+              "sales: {}\n".format(str(seller_details[8])),
+              "list of orders: {}\n".format(seller_details[3]),
+              "profit: {}\n".format(seller_details[12]),
+              "incomes: {}\n".format(seller_details[13]),
+              "costs: {}\n".format(seller_details[14]),
+              "products: {}\n".format(seller_details[11]),
+              "distance: {}\n".format(seller_details[10]))
+
+    # method to list specific costumer details
+    @staticmethod
+    def costumer_details(costumer_id):    
+        
+              
 
 class Product:
 
