@@ -80,11 +80,19 @@ class Store:
               "costs: {}\n".format(seller_details[14]),
               "products: {}\n".format(seller_details[11]),
               "distance: {}\n".format(seller_details[10]))
-
-    # method to list specific costumer details
+    # method 
     @staticmethod
-    def costumer_details(costumer_id):    
-        
+    def costumer_details(costumer_id):
+        print("current status and details of the costumer is: \n",
+              "name: {}\n".format(costumer_details[0]),
+              "last name: {}\n".format([costumer_details[1]]),
+              "address: {}\n".format(costumer_details[2]),
+              "phone: {}\n".format(costumer_details[3]),
+              "email: {}\n".format(costumer_details[4]),
+              "balance: {}\n".format(costumer_details[5]),
+              "current cart(shopping basket): {}\n".format(costumer_details[6]),
+              "favorites: {}\n".format(costumer_details[7]),
+              "shopping history: {}\n".format(costumer_details[8]))
               
 
 class Product:
