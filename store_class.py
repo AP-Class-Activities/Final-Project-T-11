@@ -80,9 +80,12 @@ class Store:
               "costs: {}\n".format(seller_details[14]),
               "products: {}\n".format(seller_details[11]),
               "distance: {}\n".format(seller_details[10]))
-    # method 
+    # method to list specific costumer details
     @staticmethod
-    def costumer_details(costumer_id):
+    def costumer_details(costumer_id): 
+     # below results is a list of form [name, last name, address, phone_number, email, credit, cart, favorites,
+     # last_shopping] and the indices are corresponding to each of these item.
+
         print("current status and details of the costumer is: \n",
               "name: {}\n".format(costumer_details[0]),
               "last name: {}\n".format([costumer_details[1]]),
@@ -94,6 +97,14 @@ class Store:
               "favorites: {}\n".format(costumer_details[7]),
               "shopping history: {}\n".format(costumer_details[8]))
               
+    # method to generate gift cards
+    @staticmethod
+    def gift_card_generator(code, year, month, day, specified_costumers_list, usage_count, specified_products, percent):
+        expire_date = datetime.date(int(year), int(month), int(day))  # determining expiration date via date object
+        specified_costumers = dict.fromkeys(specified_costumers_list, usage_count)  # determining allowed costumers
+        # adding generated gift card to gift cards dictionary by below code:
+        gift_cards[code] = [expire_date, specified_costumers, specified_products, percent]
+
 
 class Product:
 
