@@ -12,7 +12,7 @@ class Store:
         self.website_url = website_url
         self.telephone_number = telephone_number
 
-# method to approve a seller registration request
+    # method to approve a seller registration request
     @staticmethod
     def approve_seller(name, last_name, distance_to_inventory, address, phone_number, email):
         approval = input("Do you approve a seller with following details: type yes or no \n"
@@ -23,7 +23,7 @@ class Store:
         else:
             raise PermissionError
 
-     # method to approve a product listing request
+    # method to approve a product listing request
     @staticmethod
     def approve_product(product, quantity, product_id, sellers_id, price):
         approval = input("Do you approve a product with following details: type yes or no \n"
@@ -34,7 +34,7 @@ class Store:
         else:
             raise PermissionError  
 
-     # method to approve a costumer order request
+    # method to approve a costumer order request
     @staticmethod
     def approve_order(item, seller_id, costumer_id, price, quantity):
         approval = input("Do you approve an order with following details: type yes or no \n"
@@ -97,10 +97,13 @@ class Store:
               "favorites: {}\n".format(costumer_details[7]),
               "shopping history: {}\n".format(costumer_details[8]))
 
-     # method to calculate approximate shipping time
+    # method to calculate approximate shipping time
     def shipping_time_calculator(self, costumer_id, seller_id):
         print("your address is: {}".format(self.address))
-        print("the costumer address is: {}".format(costumers[costumer_id][2]))          
+        print("the costumer address is: {}".format(costumers[costumer_id][2]))
+        distance_to_costumer = int(input("estimate the approximate time from inventory to costumer in minutes: "))
+        distance_to_seller = sellers[seller_id][10]
+        return "approximate shipping time is: " + str(distance_to_seller) + str(distance_to_costumer)  
               
     # method to generate gift cards
     @staticmethod
@@ -142,12 +145,12 @@ class Product:
 
         if color not in ['blue', 'black', 'red', 'yellow', 'white']:
             raise Error('the value of color should be [blue, black, red, yellow and white] ')
-        self.color = color # Available colors for a product###
+        self.color = color # Available colors for a product
         
-        #def get_price(self, number_to_be_bought):
-           # if number_to_be_bought > quantity:
-                #return Error("Your purchase is more than the number available!")
-           # else:
-               # return price * number_to_be_bought###
+        def get_price(self, number_to_be_bought):
+           if number_to_be_bought > quantity:
+                return Error("Your purchase is more than the number available!")
+           else:
+                return price * number_to_be_bought
         
 
