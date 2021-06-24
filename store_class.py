@@ -96,6 +96,11 @@ class Store:
               "current cart(shopping basket): {}\n".format(costumer_details[6]),
               "favorites: {}\n".format(costumer_details[7]),
               "shopping history: {}\n".format(costumer_details[8]))
+
+     # method to calculate approximate shipping time
+    def shipping_time_calculator(self, costumer_id, seller_id):
+        print("your address is: {}".format(self.address))
+        print("the costumer address is: {}".format(costumers[costumer_id][2]))          
               
     # method to generate gift cards
     @staticmethod
