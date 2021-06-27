@@ -17,6 +17,7 @@ class Seller:
                 self.__phone_number = phone_number  # assigning it's phone number
                 self.__email = email  # assigning it's email address
                 self.password.__=password #assiging it's password
+                self.rates = dict()  # assigning empty dictionary of rates to be filled by costumers opinions
                  # setter and getter
                 @property
                 def name(self): 
@@ -61,7 +62,7 @@ class Seller:
                 def password(self,value): 
                     self.__password = value
             
-                self.rates = dict()  # assigning empty dictionary of rates to be filled by costumers opinions
+                
                 random_id = random.randint(100000, 1000000)  # generating random 6 digit id number
                 '''hence the generated id is random, it is possible that they may coincide, so to avoid such situations
                 we use this while loop to check for existing duplicates'''
@@ -70,8 +71,7 @@ class Seller:
                     if random_id not in sellers.keys():  # checking existing sellers to find duplicate seller id
                         self.seller_id = "SL" + str(random_id)  # no duplicates were found, so we assign seller id
                         flag = False  # now that the id is successfully assigned, we change the flag to stop while loop
-                    else:  # duplicate id were found
-                        random_id = random.randint(100000, 1000000)  # generating a new random seller id
+                    else:  # duplicate id were found 
                 self.balance = 0  # seller initial account balance
                 self.distance_to_inventory = distance_to_inventory  # time distance to store  from seller location
                 self.sales = dict()  # all seller sales by date, the format of the dictionary is = {date: sale details}
