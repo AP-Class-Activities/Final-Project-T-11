@@ -120,6 +120,7 @@ class Costumer:
         # adding costumer comment to the product's comments records.
         products[product_name][3][self.costumer_id] = costumer_comment
 
+
 class Seller:
 
     def __init__(self, name, last_name, distance_to_inventory, address, phone_number, email):
@@ -205,9 +206,43 @@ class Seller:
     def list_of_orders(self, costumer_order):
         self.list_of_orders.append(costumer_order)
 
+    # method to allow seller to withdraw an arbitrary amount of money from it's credit from the store
+    def withdraw(self, amount, net_withdrawal_rate):
+        assert 0 < net_withdrawal_rate < 1
+        if store_cash_desk[self.seller_id] > amount:  # check if seller have enough credit in store cash desk.
+            '''net withdrawal rate is the net deposited percentage of sales which seller can withdraw and the extra
+            money is paid to the store as commission. it should be a floating number between 0 and 1. for example a 0.7
+            net withdrawal rates means that the seller takes 70 percent of the whole sale and pay 30 percent of it to 
+            store as commission.'''
+            self.balance = self.balance + amount * net_withdrawal_rate  # withdrawing credit & adding it to it's balance
+            Store.net_profit += (1 - net_withdrawal_rate) * amount  # paying the commission to the store
+            store_cash_desk[self.seller_id] -= amount  # decreasing the seller's credit by the withdrawing amount
+        else:  # seller does not have enough credit in store cash desk
+            print("you don't have enough credit!")
 
-    def withdraw(self, amount):
-        self.balance = self.balance - amount
+    # method to add a product which is an object of Product class
+    def seller_products(self, product_name, product_quantity, product_price):
+
+        # check if it gets approved by admin or not
+        try:
+            # generate a product object from the Product class
+            product_id = random.randint(100000, 1000000)  # generating random 6 digit product id
+            '''hence the generated id is random, it is possible that they may coincide, so to avoid such situations we
+             use this while loop to check for existing duplicates'''
+            flag = True  # a flag to keep while loop going until we have a unique product id
+            while flag is True:
+                for item, details in products.items():  # iterating over all products to find duplicate product id
+                    if details[0] == product_id:  # check if product id is not unique
+                        product_id = random.randint(100000, 1000000)  # generating a new random product id
+                # we have successfully iterated whole products and we have make sure that the product id is unique
+                # now that the product id is unique we generate the new product object from Products class
+                new_product = Product(product_name, product_quantity, product_id, self.seller_id, product_price)
+                self.products.append(new_product)  # append new product to seller products list
+                flag = False  # now that the product is added successfully we change the flag to stop while loop
+
+        # if gets rejected:
+        except PermissionError:
+            print("This product was denied by admin")
 
 
 class Store:
@@ -218,7 +253,7 @@ class Store:
         self.website_url = website_url
         self.telephone_number = telephone_number
 
-# method to approve a seller registration request
+    # method to approve a seller registration request
     @staticmethod
     def approve_seller(name, last_name, distance_to_inventory, address, phone_number, email):
         approval = input("Do you approve a seller with following details: type yes or no \n"
@@ -229,7 +264,7 @@ class Store:
         else:
             raise PermissionError
 
-     # method to approve a product listing request
+    # method to approve a product listing request
     @staticmethod
     def approve_product(product, quantity, product_id, sellers_id, price):
         approval = input("Do you approve a product with following details: type yes or no \n"
@@ -238,9 +273,9 @@ class Store:
         if approval.lower() == "yes":
             return True
         else:
-            raise PermissionError  
+            raise PermissionError
 
-     # method to approve a costumer order request
+    # method to approve a costumer order request
     @staticmethod
     def approve_order(item, seller_id, costumer_id, price, quantity):
         approval = input("Do you approve an order with following details: type yes or no \n"
@@ -249,7 +284,7 @@ class Store:
         if approval.lower() == "yes":
             return True
         else:
-            raise PermissionError        
+            raise PermissionError
 
     # method to remove a specific costumer
     @staticmethod
@@ -259,14 +294,74 @@ class Store:
     # method to remove a specific seller
     @staticmethod
     def remove_seller(seller_id):
-        del sellers[seller_id]            
+        del sellers[seller_id]
+
+    # method to see specific seller details
+    @staticmethod
+    def seller_details(seller_id):
+        # below results is a list of form [name, last name, address, list of orders, balance, phone number,
+        # email, rates, sales, suspension, distance to inventory, products] and the indices are
+        # corresponding to each of these item
+        seller_details = sellers[seller_id]
+        print("current status and details of the seller is: \n",
+              "name: {}\n".format(seller_details[0]),
+              "last name: {}\n".format([seller_details[1]]),
+              "address: {}\n".format(seller_details[2]),
+              "phone: {}\n".format(seller_details[5]),
+              "email: {}\n".format(seller_details[6]),
+              "suspension status: {}\n".format(seller_details[9]),
+              "balance: {}\n".format(seller_details[4]),
+              "with-held credit: {}\n".format(store_cash_desk[seller_id]),
+              "average rate: {} and detailed ratings is: {}\n".format(sum(seller_details[7])/len(seller_details[7]),
+                                                                      seller_details[7]),
+              "sales: {}\n".format(str(seller_details[8])),
+              "list of orders: {}\n".format(seller_details[3]),
+              "profit: {}\n".format(seller_details[12]),
+              "incomes: {}\n".format(seller_details[13]),
+              "costs: {}\n".format(seller_details[14]),
+              "products: {}\n".format(seller_details[11]),
+              "distance: {}\n".format(seller_details[10]))
+
+    # method to list specific costumer details
+    @staticmethod
+    def costumer_details(costumer_id):
+        # below results is a list of form [name, last name, address, phone_number, email, credit, cart, favorites,
+        # last_shopping] and the indices are corresponding to each of these item.
+        costumer_details = costumers[costumer_id]
+        print("current status and details of the costumer is: \n",
+              "name: {}\n".format(costumer_details[0]),
+              "last name: {}\n".format([costumer_details[1]]),
+              "address: {}\n".format(costumer_details[2]),
+              "phone: {}\n".format(costumer_details[3]),
+              "email: {}\n".format(costumer_details[4]),
+              "balance: {}\n".format(costumer_details[5]),
+              "current cart(shopping basket): {}\n".format(costumer_details[6]),
+              "favorites: {}\n".format(costumer_details[7]),
+              "shopping history: {}\n".format(costumer_details[8]))
+
+    # method to calculate approximate shipping time
+    def shipping_time_calculator(self, costumer_id, seller_id):
+        print("your address is: {}".format(self.address))
+        print("the costumer address is: {}".format(costumers[costumer_id][2]))
+        distance_to_costumer = int(input("estimate the approximate time from inventory to costumer in minutes: "))
+        distance_to_seller = sellers[seller_id][10]
+        return "approximate shipping time is: " + str(distance_to_seller) + str(distance_to_costumer)
+
+    # method to generate gift cards
+    @staticmethod
+    def gift_card_generator(code, year, month, day, specified_costumers_list, usage_count, specified_products, percent):
+        expire_date = datetime.date(int(year), int(month), int(day))  # determining expiration date via date object
+        specified_costumers = dict.fromkeys(specified_costumers_list, usage_count)  # determining allowed costumers
+        # adding generated gift card to gift cards dictionary by below code:
+        gift_cards[code] = [expire_date, specified_costumers, specified_products, percent]
+
 
 class Product:
 
-    def __init__(self, product, quantity, product_id, sellers_id, price,color):
+    def __init__(self, product, quantity, product_id, sellers_id, price):
 
         # to check if store approves this product to be listed on it's catalogue or not
-        if Store.approve_product([product, quantity, product_id, sellers_id, price,color]) is True:
+        if Store.approve_product([product, quantity, product_id, sellers_id, price]) is True:
 
             # to check if a product is not available in the store by another seller
             if product not in products.keys():
@@ -275,11 +370,10 @@ class Product:
                 self.product_id = "PR" + str(product_id)  # assigning product id
                 self.sellers_id = [sellers_id]  # assigning seller id
                 self.price = price  # assigning it's price
-                self.color = color #assigning color
                 self.comments = dict()  # empty dictionary of comments to be filled by costumers opinions
                 self.quantity = quantity  # assigning product quantity
                 # adding new product to the dictionary of all products to be inserted to database later in below format:
-                products[self.product] = [self.product_id, self.sellers_id, self.price, self.comments, quantity,color]
+                products[self.product] = [self.product_id, self.sellers_id, self.price, self.comments, quantity]
 
             # if it is available then:
             else:
@@ -289,16 +383,3 @@ class Product:
         # if store does not permit the new product:
         else:
             raise PermissionError
-
-        if color not in ['blue', 'black', 'red', 'yellow', 'white']:
-           raise Error('the value of color should be [blue, black, red, yellow and white] ')
-        self.color = color # Available colors for a product###
-        #def get_price(self, number_to_be_bought):
-           # if number_to_be_bought > quantity:
-                #return Error("Your purchase is more than the number available!")
-           # else:
-               # return price * number_to_be_bought###
-        
-
-
-
