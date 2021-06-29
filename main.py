@@ -161,7 +161,7 @@ class Seller:
         # check if store approves this new seller or not
         try:
             # calling the store system admin to accept or reject this seller request
-            if Store.approve_seller([name, last_name, distance_to_inventory, address, phone_number, email]) is True:
+            if Store.approve_seller(name, last_name, distance_to_inventory, address, phone_number, email) is True:
                 self.name = name  # assigning it's first name
                 self.last_name = last_name   # assigning it's last name
                 self.phone_number = phone_number  # assigning it's phone number
