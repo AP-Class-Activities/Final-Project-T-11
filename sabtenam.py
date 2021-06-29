@@ -9,8 +9,23 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
-
+f = open('database.txt', 'r+')
+username = input()
+password = input()
+s = f.readlines()
+s = [j for i in s for j in i.split()]
+emkanSabtnam = True
+for k in range(0, len(s), 2):
+    if username == s[k]:
+        emkanSabtnam = False
+        print('in name karbari tekrari ast!')
+        break
+f.close()
+if emkanSabtnam:
+    f = open('database.txt', 'a+')
+    f.write(f'{username} {password}\n')
+    print('sabtname ba mofaghiat anjam shod!')
+    f.close()
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
