@@ -1,3 +1,4 @@
+from PyQt5 import QtCore, QtGui, QtWidgets
 import datetime
 import random
 sellers = dict()
@@ -7,6 +8,38 @@ costumers = dict()
 store_cash_desk = dict()
 gift_cards = dict()
 
+class Ui_MainWindow(object):
+    def setupUi(self, MainWindow):
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(800, 600)
+        MainWindow.setStyleSheet("background-color: rgb(85, 255, 255);")
+        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setObjectName("centralwidget")
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setGeometry(QtCore.QRect(260, 60, 281, 161))
+        self.label.setText("")
+        self.label.setPixmap(QtGui.QPixmap("index.jpg"))
+        self.label.setObjectName("label")
+        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton.setGeometry(QtCore.QRect(474, 360, 81, 31))
+        self.pushButton.setStyleSheet("background-color: rgb(85, 85, 255);")
+        self.pushButton.setObjectName("pushButton")
+        self.customer = QtWidgets.QPushButton(self.centralwidget)
+        self.customer.setGeometry(QtCore.QRect(270, 360, 81, 31))
+        self.customer.setStyleSheet("background-color: rgb(255, 85, 0);")
+        self.customer.setObjectName("customer")
+        MainWindow.setCentralWidget(self.centralwidget)
+
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+    def retranslateUi(self, MainWindow):
+        _translate = QtCore.QCoreApplication.translate
+        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.pushButton.setText(_translate("MainWindow", "فروشنده"))
+        self.customer.setText(_translate("MainWindow", "مشتری"))
+
+    #def switch
 
 def is_gift_card_valid(code, costumer_id, product):
     date_check = False
@@ -79,7 +112,7 @@ class Costumer:
         total_fee = 0  # a variable to store the amount of money that costumer should pay for it's shopping
         # adding products prices to the invoice
         for order in self.cart.values():  # iterating over costumer's cart(shopping basket)
-            total_fee += order[1] * order[2]  # adding prices
+            total_fee += order[1]  # adding prices
         if gift_code is not None:  # check if a gift code is entered or not
             for product in self.cart.keys():  # iterating over purchased items
                 gift_card_validity = is_gift_card_valid(gift_code, self.costumer_id, product)  # validity of gift card
@@ -394,3 +427,12 @@ class Product:
                 return Error("Your purchase is more than the number available!")
            else:
                 return price * number_to_be_bought
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    sys.exit(app.exec_())
