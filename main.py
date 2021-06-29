@@ -384,7 +384,7 @@ class Product:
         else:
             raise PermissionError
 
-   if color not in ['blue', 'black', 'red', 'yellow', 'white']:
+        if color not in ['blue', 'black', 'red', 'yellow', 'white']:
             raise Error('the value of color should be [blue, black, red, yellow and white] ')
         self.color = color # Available colors for a product
         
