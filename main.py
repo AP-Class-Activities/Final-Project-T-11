@@ -1514,31 +1514,33 @@ class Product:
 
     def __init__(self, product, quantity, product_id, sellers_id,color, price):
 
-        # to check if store approves this product to be listed on it's catalogue or not
-        if Store.approve_product([product, quantity, product_id, sellers_id, price]) is True:
+        try:
+            # to check if store approves this product to be listed on it's catalogue or not
+            if Store.approve_product(product, quantity, product_id, sellers_id, price) is True:
 
-            # to check if a product is not available in the store by another seller
-            if product not in products.keys():
-                assert len(str(product_id)) == 6  # check if the length of the product id is exactly 6 or not
-                self.product = product  # assigning product name
-                self.product_id = "PR" + str(product_id)  # assigning product id
-                self.sellers_id = [sellers_id]  # assigning seller id
-                self.price = price  # assigning it's price
-                self.color = color # assigning it's color
-                self.comments = dict()  # empty dictionary of comments to be filled by costumers opinions
-                self.quantity = quantity  # assigning product quantity
-                # adding new product to the dictionary of all products to be inserted to database later in below format:
-                products[self.product] = [self.product_id, self.sellers_id, self.price, self.comments, quantity]
+                # to check if a product is not available in the store by another seller
+                if product not in products.keys():
+                    assert len(str(product_id)) == 6  # check if the length of the product id is exactly 6 or not
+                    self.product = product  # assigning product name
+                    self.product_id = "PR" + str(product_id)  # assigning product id
+                    self.sellers_id = [sellers_id]  # assigning seller id
+                    self.price = price  # assigning it's price
+                    self.color = color # assigning it's color
+                    self.comments = dict()  # empty dictionary of comments to be filled by costumers opinions
+                    self.quantity = quantity  # assigning product quantity
+                    # adding new product to the dictionary of all products to be inserted to database later in below format:
+                    products[self.product] = [self.product_id, self.sellers_id, self.price, self.comments, quantity]
 
             # if it is available then:
             else:
                 products[product][1].append(sellers_id)  # append the new seller to the existing list of sellers
                 products[product][-1] += quantity  # increase the quantity by the amount which new seller wish to add
 
-        # if store does not permit the new product:
-        else:
-            raise PermissionError
+           
+        except PermissionError:
+            print("this product is not allowed in this store.")
 
+       
         if color not in ['blue', 'black', 'red', 'yellow', 'white']:
             raise ('the value of color should be [blue, black, red, yellow and white] ')
         self.color = color # Available colors for a product
