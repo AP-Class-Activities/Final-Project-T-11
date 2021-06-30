@@ -501,8 +501,8 @@ class Seller:
     def historical_sales(self, item, quantity, date, costumer_id, buying_price, selling_price, cost):
         profits = (selling_price - buying_price) * quantity
         incomes = selling_price * quantity
-        self.profit = profits  # updating profits amount
-        self.income = incomes  # updating incomes amount
+        self.profit += profits  # updating profits amount
+        self.income += incomes  # updating incomes amount
         self.cost += cost  # accumulating costs
         # records will be saved in a dictionary by below format:
         self.sales[date] = [item, quantity, costumer_id, buying_price, selling_price, profits, self.cost, incomes]
