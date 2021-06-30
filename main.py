@@ -8,6 +8,7 @@ costumers = dict()
 store_cash_desk = dict()
 gift_cards = dict()
 
+#To choose you are seller or customer
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -39,7 +40,306 @@ class Ui_MainWindow(object):
         self.pushButton.setText(_translate("MainWindow", "فروشنده"))
         self.customer.setText(_translate("MainWindow", "مشتری"))
 
-    #def switch
+# Question about whether you have an account or you need to register first
+class Ui_MainWindow(object):
+    def setupUi(self, MainWindow):
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(800, 600)
+        MainWindow.setStyleSheet("background-color: rgb(170, 170, 255);")
+        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setObjectName("centralwidget")
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setGeometry(QtCore.QRect(520, 50, 47, 13))
+        self.label.setText("")
+        self.label.setObjectName("label")
+        self.label_2 = QtWidgets.QLabel(self.centralwidget)
+        self.label_2.setGeometry(QtCore.QRect(170, 20, 361, 171))
+        self.label_2.setText("")
+        self.label_2.setPixmap(QtGui.QPixmap("photo.jpg"))
+        self.label_2.setObjectName("label_2")
+        self.label_3 = QtWidgets.QLabel(self.centralwidget)
+        self.label_3.setGeometry(QtCore.QRect(370, 290, 191, 41))
+        font = QtGui.QFont()
+        font.setPointSize(16)
+        self.label_3.setFont(font)
+        self.label_3.setObjectName("label_3")
+        self.checkBox = QtWidgets.QCheckBox(self.centralwidget)
+        self.checkBox.setGeometry(QtCore.QRect(430, 370, 70, 17))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        font.setBold(False)
+        font.setWeight(50)
+        self.checkBox.setFont(font)
+        self.checkBox.setStyleSheet("background-color: rgb(0, 255, 0);")
+        self.checkBox.setObjectName("checkBox")
+        self.checkBox_2 = QtWidgets.QCheckBox(self.centralwidget)
+        self.checkBox_2.setGeometry(QtCore.QRect(270, 370, 70, 17))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.checkBox_2.setFont(font)
+        self.checkBox_2.setStyleSheet("background-color: rgb(255, 0, 0);")
+        self.checkBox_2.setObjectName("checkBox_2")
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
+        self.menubar.setObjectName("menubar")
+        MainWindow.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        self.statusbar.setObjectName("statusbar")
+        MainWindow.setStatusBar(self.statusbar)
+
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+    def retranslateUi(self, MainWindow):
+        _translate = QtCore.QCoreApplication.translate
+        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.label_3.setText(_translate("MainWindow", "آیا قبلا عضو شدید؟"))
+        self.checkBox.setText(_translate("MainWindow", "بله"))
+        self.checkBox_2.setText(_translate("MainWindow", "خیر"))
+
+# If you have already been a member, enter this page and enter your username and password
+f = open('database.txt', 'r+')
+username = input()
+password = input()
+s = f.readlines()
+s = [j for i in s for j in i.split()]
+emkanSabtnam = True
+for k in range(0, len(s), 2):
+    if username == s[k]:
+        emkanSabtnam = False
+        print('in name karbari tekrari ast!')
+        break
+f.close()
+if emkanSabtnam:
+    f = open('database.txt', 'a+')
+    f.write(f'{username} {password}\n')
+    print('sabtname ba mofaghiat anjam shod!')
+    f.close()
+class Ui_MainWindow(object):
+    def setupUi(self, MainWindow):
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(800, 600)
+        MainWindow.setStyleSheet("background-color: rgb(170, 170, 255);")
+        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setObjectName("centralwidget")
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setGeometry(QtCore.QRect(170, 0, 351, 201))
+        self.label.setText("")
+        self.label.setPixmap(QtGui.QPixmap("images.jpg"))
+        self.label.setObjectName("label")
+        self.label_4 = QtWidgets.QLabel(self.centralwidget)
+        self.label_4.setGeometry(QtCore.QRect(510, 340, 61, 20))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.label_4.setFont(font)
+        self.label_4.setObjectName("label_4")
+        self.lineEdit_2 = QtWidgets.QLineEdit(self.centralwidget)
+        self.lineEdit_2.setGeometry(QtCore.QRect(212, 300, 241, 20))
+        self.lineEdit_2.setObjectName("lineEdit_2")
+        self.lineEdit_3 = QtWidgets.QLineEdit(self.centralwidget)
+        self.lineEdit_3.setGeometry(QtCore.QRect(212, 340, 241, 20))
+        self.lineEdit_3.setObjectName("lineEdit_3")
+        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton.setGeometry(QtCore.QRect(370, 440, 75, 23))
+        self.pushButton.setStyleSheet("background-color: rgb(0, 255, 0);")
+        self.pushButton.setObjectName("pushButton")
+        self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_2.setGeometry(QtCore.QRect(180, 440, 75, 23))
+        self.pushButton_2.setStyleSheet("background-color: rgb(255, 0, 0);")
+        self.pushButton_2.setObjectName("pushButton_2")
+        self.label_2 = QtWidgets.QLabel(self.centralwidget)
+        self.label_2.setGeometry(QtCore.QRect(506, 300, 61, 20))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.label_2.setFont(font)
+        self.label_2.setObjectName("label_2")
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
+        self.menubar.setObjectName("menubar")
+        MainWindow.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        self.statusbar.setObjectName("statusbar")
+        MainWindow.setStatusBar(self.statusbar)
+
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+    def retranslateUi(self, MainWindow):
+        _translate = QtCore.QCoreApplication.translate
+        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.label_4.setText(_translate("MainWindow", "رمز ورود"))
+        self.pushButton.setText(_translate("MainWindow", "تایید"))
+        self.pushButton_2.setText(_translate("MainWindow", "انصراف"))
+        self.label_2.setText(_translate("MainWindow", "نام کاربری"))
+
+# If the seller doesn't have an account, log in to this page and become a member
+class Ui_MainWindow(object):
+    def setupUi(self, MainWindow):
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(800, 600)
+        MainWindow.setStyleSheet("background-color: rgb(85, 85, 255);\n"
+"background-color: rgb(170, 170, 255);\n"
+"background-color: rgb(170, 170, 255);\n"
+"background-color: rgb(85, 85, 127);")
+        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setObjectName("centralwidget")
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setGeometry(QtCore.QRect(220, 10, 181, 61))
+        font = QtGui.QFont()
+        font.setPointSize(16)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label.setFont(font)
+        self.label.setObjectName("label")
+        self.label_2 = QtWidgets.QLabel(self.centralwidget)
+        self.label_2.setGeometry(QtCore.QRect(520, 100, 47, 13))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.label_2.setFont(font)
+        self.label_2.setObjectName("label_2")
+        self.label_3 = QtWidgets.QLabel(self.centralwidget)
+        self.label_3.setGeometry(QtCore.QRect(476, 140, 91, 20))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.label_3.setFont(font)
+        self.label_3.setObjectName("label_3")
+        self.label_4 = QtWidgets.QLabel(self.centralwidget)
+        self.label_4.setGeometry(QtCore.QRect(506, 180, 61, 20))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.label_4.setFont(font)
+        self.label_4.setObjectName("label_4")
+        self.label_5 = QtWidgets.QLabel(self.centralwidget)
+        self.label_5.setGeometry(QtCore.QRect(496, 220, 71, 20))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.label_5.setFont(font)
+        self.label_5.setObjectName("label_5")
+        self.label_6 = QtWidgets.QLabel(self.centralwidget)
+        self.label_6.setGeometry(QtCore.QRect(506, 260, 61, 20))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.label_6.setFont(font)
+        self.label_6.setObjectName("label_6")
+        self.label_7 = QtWidgets.QLabel(self.centralwidget)
+        self.label_7.setGeometry(QtCore.QRect(506, 300, 61, 20))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.label_7.setFont(font)
+        self.label_7.setObjectName("label_7")
+        self.lineEdit = QtWidgets.QLineEdit(self.centralwidget)
+        self.lineEdit.setGeometry(QtCore.QRect(142, 100, 331, 20))
+        self.lineEdit.setObjectName("lineEdit")
+        self.lineEdit_2 = QtWidgets.QLineEdit(self.centralwidget)
+        self.lineEdit_2.setGeometry(QtCore.QRect(140, 140, 331, 20))
+        self.lineEdit_2.setObjectName("lineEdit_2")
+        self.lineEdit_3 = QtWidgets.QLineEdit(self.centralwidget)
+        self.lineEdit_3.setGeometry(QtCore.QRect(142, 180, 331, 20))
+        self.lineEdit_3.setObjectName("lineEdit_3")
+        self.lineEdit_4 = QtWidgets.QLineEdit(self.centralwidget)
+        self.lineEdit_4.setGeometry(QtCore.QRect(142, 220, 331, 20))
+        self.lineEdit_4.setObjectName("lineEdit_4")
+        self.lineEdit_5 = QtWidgets.QLineEdit(self.centralwidget)
+        self.lineEdit_5.setGeometry(QtCore.QRect(142, 260, 331, 20))
+        self.lineEdit_5.setObjectName("lineEdit_5")
+        self.lineEdit_6 = QtWidgets.QLineEdit(self.centralwidget)
+        self.lineEdit_6.setGeometry(QtCore.QRect(140, 300, 331, 20))
+        self.lineEdit_6.setObjectName("lineEdit_6")
+        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton.setGeometry(QtCore.QRect(360, 420, 75, 23))
+        self.pushButton.setStyleSheet("background-color: rgb(85, 255, 0);")
+        self.pushButton.setObjectName("pushButton")
+        self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_2.setGeometry(QtCore.QRect(150, 420, 75, 23))
+        self.pushButton_2.setStyleSheet("background-color: rgb(255, 0, 0);")
+        self.pushButton_2.setObjectName("pushButton_2")
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
+        self.menubar.setObjectName("menubar")
+        MainWindow.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        self.statusbar.setObjectName("statusbar")
+        MainWindow.setStatusBar(self.statusbar)
+
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+    def retranslateUi(self, MainWindow):
+        _translate = QtCore.QCoreApplication.translate
+        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.label.setText(_translate("MainWindow", "صفحه فروشنده"))
+        self.label_2.setText(_translate("MainWindow", "نام"))
+        self.label_3.setText(_translate("MainWindow", "نام خانوادگی"))
+        self.label_4.setText(_translate("MainWindow", "آدرس"))
+        self.label_5.setText(_translate("MainWindow", "شماره تلقن"))
+        self.label_6.setText(_translate("MainWindow", "ایمیل"))
+        self.label_7.setText(_translate("MainWindow", "رمز ورود"))
+        self.pushButton.setText(_translate("MainWindow", "ورود"))
+        self.pushButton_2.setText(_translate("MainWindow", "انصراف"))
+
+
+
+#category: To choose in which product category you offer
+class Ui_MainWindow(object):
+    def setupUi(self, MainWindow):
+        Form.setObjectName("MainWindow")
+        Form.resize(800, 600)
+        Form.setStyleSheet("\n"
+"background-color: qlineargradient(spread:pad, x1:1, y1:1, x2:1, y2:0, stop:0 rgba(0, 0, 85, 255), stop:1 rgba(255, 255, 255, 255));")
+        self.pushButton = QtWidgets.QPushButton(Form)
+        self.pushButton.setGeometry(QtCore.QRect(120, 130, 261, 111))
+        font = QtGui.QFont()
+        font.setPointSize(16)
+        font.setBold(True)
+        font.setWeight(75)
+        self.pushButton.setFont(font)
+        self.pushButton.setStyleSheet("background-color: rgb(255, 255, 127);\n"
+"")
+        self.pushButton.setObjectName("pushButton")
+        self.pushButton_2 = QtWidgets.QPushButton(Form)
+        self.pushButton_2.setGeometry(QtCore.QRect(530, 130, 261, 111))
+        font = QtGui.QFont()
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.pushButton_2.setFont(font)
+        self.pushButton_2.setStyleSheet("background-color: rgb(255, 255, 127);")
+        self.pushButton_2.setObjectName("pushButton_2")
+        self.pushButton_3 = QtWidgets.QPushButton(Form)
+        self.pushButton_3.setGeometry(QtCore.QRect(120, 310, 261, 111))
+        font = QtGui.QFont()
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.pushButton_3.setFont(font)
+        self.pushButton_3.setStyleSheet("background-color: rgb(255, 255, 127);")
+        self.pushButton_3.setObjectName("pushButton_3")
+        self.pushButton_4 = QtWidgets.QPushButton(Form)
+        self.pushButton_4.setGeometry(QtCore.QRect(530, 310, 261, 111))
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.pushButton_4.setFont(font)
+        self.pushButton_4.setStyleSheet("background-color: rgb(255, 255, 127);")
+        self.pushButton_4.setObjectName("pushButton_4")
+
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(Form)
+
+    def retranslateUi(self, MainWindow):
+        _translate = QtCore.QCoreApplication.translate
+        Form.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.pushButton.setText(_translate("MainWindow", "میوه و سبزیجات"))
+        self.pushButton_2.setText(_translate("MainWindow", "مواد غذایی"))
+        self.pushButton_3.setText(_translate("MainWindow", "پوشاک"))
+        self.pushButton_4.setText(_translate("MainWindow", "آرایشی و بهداشتی"))
+
+
+
 
 def is_gift_card_valid(code, costumer_id, product):
     date_check = False
@@ -121,7 +421,7 @@ class Costumer:
                     total_fee -= self.cart[product][1] * gift_cards[gift_code][3]
         if total_fee > self.credit:  # checking if costumer have enough money to pay for his card(shopping basket)
             return "sorry, you have to increase your balance by: " + str(total_fee - self.credit) + "$"
-        if total_fee <= self.credit:  # it has enough money so:
+        else:  # it has enough money so:
             self.credit = self.credit - total_fee  # reducing the costumer's shopping fees from it's credit
             self.last_shopping.append(self.cart)  # adding user cart(shopping basket) to it's historical shopping data
             for product, details in self.cart:  # adding each seller sales to the history of store transactions
@@ -161,7 +461,7 @@ class Seller:
         # check if store approves this new seller or not
         try:
             # calling the store system admin to accept or reject this seller request
-            if Store.approve_seller(name, last_name, distance_to_inventory, address, phone_number, email) is True:
+            if Store.approve_seller([name, last_name, distance_to_inventory, address, phone_number, email]) is True:
                 self.name = name  # assigning it's first name
                 self.last_name = last_name   # assigning it's last name
                 self.phone_number = phone_number  # assigning it's phone number
