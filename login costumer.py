@@ -192,6 +192,53 @@ class Ui_Form(object):
         self.pushButton_6.setText(_translate("Form", "تایید"))
 
 
+# pay money
+class Ui_Form(object):
+    def setupUi(self, Form):
+        Form.setObjectName("Form")
+        Form.setWindowModality(QtCore.Qt.NonModal)
+        Form.resize(400, 299)
+        Form.setLayoutDirection(QtCore.Qt.RightToLeft)
+        Form.setStyleSheet("background-color: qlineargradient(spread:pad, x1:1, y1:1, x2:1, y2:0, stop:0 rgba(0, 0, 85, 255), stop:1 rgba(255, 255, 255, 255));")
+        self.label = QtWidgets.QLabel(Form)
+        self.label.setGeometry(QtCore.QRect(70, 50, 251, 20))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.label.setFont(font)
+        self.label.setStyleSheet("background-color:rgb(217, 255, 255);")
+        self.label.setAlignment(QtCore.Qt.AlignCenter)
+        self.label.setObjectName("label")
+        self.radioButton = QtWidgets.QRadioButton(Form)
+        self.radioButton.setGeometry(QtCore.QRect(140, 110, 121, 31))
+        self.radioButton.setStyleSheet("background-color:rgb(217, 255, 255);")
+        self.radioButton.setObjectName("radioButton")
+        self.radioButton_2 = QtWidgets.QRadioButton(Form)
+        self.radioButton_2.setGeometry(QtCore.QRect(140, 160, 121, 31))
+        self.radioButton_2.setStyleSheet("background-color:rgb(217, 255, 255);")
+        self.radioButton_2.setObjectName("radioButton_2")
+        self.radioButton_3 = QtWidgets.QRadioButton(Form)
+        self.radioButton_3.setGeometry(QtCore.QRect(140, 210, 121, 31))
+        self.radioButton_3.setStyleSheet("background-color:rgb(217, 255, 255);")
+        self.radioButton_3.setObjectName("radioButton_3")
+        self.pushButton = QtWidgets.QPushButton(Form)
+        self.pushButton.setGeometry(QtCore.QRect(160, 260, 75, 23))
+        self.pushButton.setStyleSheet("background-color:rgb(5, 187, 0);\n"
+"")
+        self.pushButton.setObjectName("pushButton")
+
+        self.retranslateUi(Form)
+        QtCore.QMetaObject.connectSlotsByName(Form)
+
+    def retranslateUi(self, Form):
+        _translate = QtCore.QCoreApplication.translate
+        Form.setWindowTitle(_translate("Form", "Form"))
+        self.label.setText(_translate("Form", "نحوه ی پرداخت را انتخاب کنید:"))
+        self.radioButton.setText(_translate("Form", "پرداخت آنلاین"))
+        self.radioButton_2.setText(_translate("Form", "پرداخت در محل"))
+        self.radioButton_3.setText(_translate("Form", "پرداخت با کارت هدیه"))
+        self.pushButton.setText(_translate("Form", "تایید"))
+
+
 
 if __name__ == "__main__":
     import sys
