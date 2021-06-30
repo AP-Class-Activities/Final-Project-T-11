@@ -559,10 +559,10 @@ class Seller:
         return [time_frame_profits, time_frame_incomes, time_frame_costs, time_frame_sales_count]
 
     # method to suspend a seller if it's negative feedbacks exceeds a certain amount, limit can be changed arbitrarily
-    def suspend(self, limit):
+    def suspend(self):
         # filtering negative feedbacks from the seller's rating list
         count_of_negative_feedbacks = len(list(filter(lambda i: i < 0, sellers[self.seller_id][7])))
-        if count_of_negative_feedbacks > limit:  # if negative feedbacks pass over a certain amount we suspend seller
+        if count_of_negative_feedbacks > 15:  # if negative feedbacks pass over a certain amount we suspend seller
             self.suspension = True  # seller suspended
             suspended_sellers.append(self.seller_id)
 
