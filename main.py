@@ -423,7 +423,7 @@ class Product:
         
         def get_price(self, number_to_be_bought):
            if number_to_be_bought > quantity:
-                return Error("Your purchase is more than the number available!")
+                return ("Your purchase is more than the number available!")
            else:
                 return price * number_to_be_bought
 
