@@ -575,7 +575,7 @@ class Seller:
     # method to allow seller to withdraw an arbitrary amount of money from it's credit from the store
     def withdraw(self, amount, net_withdrawal_rate):
         assert 0 < net_withdrawal_rate < 1
-        if store_cash_desk[self.seller_id] > amount:  # check if seller have enough credit in store cash desk.
+        if store_cash_desk[self.seller_id] >= amount:  # check if seller have enough credit in store cash desk.
             '''net withdrawal rate is the net deposited percentage of sales which seller can withdraw and the extra
             money is paid to the store as commission. it should be a floating number between 0 and 1. for example a 0.7
             net withdrawal rates means that the seller takes 70 percent of the whole sale and pay 30 percent of it to 
