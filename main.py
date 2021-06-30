@@ -391,7 +391,7 @@ class Store:
 
 class Product:
 
-    def __init__(self, product, quantity, product_id, sellers_id, price):
+    def __init__(self, product, quantity, product_id, sellers_id,color, price):
 
         # to check if store approves this product to be listed on it's catalogue or not
         if Store.approve_product([product, quantity, product_id, sellers_id, price]) is True:
@@ -403,6 +403,7 @@ class Product:
                 self.product_id = "PR" + str(product_id)  # assigning product id
                 self.sellers_id = [sellers_id]  # assigning seller id
                 self.price = price  # assigning it's price
+                self.color = color # assigning it's color
                 self.comments = dict()  # empty dictionary of comments to be filled by costumers opinions
                 self.quantity = quantity  # assigning product quantity
                 # adding new product to the dictionary of all products to be inserted to database later in below format:
