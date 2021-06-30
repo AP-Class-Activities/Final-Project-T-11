@@ -123,6 +123,76 @@ class Ui_MainWindow(object):
         self.pushButton_2.setText(_translate("MainWindow", "انصراف"))
 
 
+
+#sabade kharid
+class Ui_Form(object):
+    def setupUi(self, Form):
+        Form.setObjectName("Form")
+        Form.resize(400, 296)
+        Form.setStyleSheet("background-color: qlineargradient(spread:pad, x1:1, y1:1, x2:1, y2:0, stop:0 rgba(0, 0, 85, 255), stop:1 rgba(255, 255, 255, 255));")
+        self.verticalLayout = QtWidgets.QVBoxLayout(Form)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.label = QtWidgets.QLabel(Form)
+        self.label.setMaximumSize(QtCore.QSize(16777215, 40))
+        self.label.setStyleSheet("background-color: rgb(255, 255, 127);")
+        self.label.setAlignment(QtCore.Qt.AlignCenter)
+        self.label.setObjectName("label")
+        self.verticalLayout.addWidget(self.label)
+        self.gridLayout = QtWidgets.QGridLayout()
+        self.gridLayout.setObjectName("gridLayout")
+        self.frame = QtWidgets.QFrame(Form)
+        self.frame.setFrameShape(QtWidgets.QFrame.Panel)
+        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame.setLineWidth(5)
+        self.frame.setObjectName("frame")
+        self.listWidget = QtWidgets.QListWidget(self.frame)
+        self.listWidget.setGeometry(QtCore.QRect(10, 10, 361, 181))
+        self.listWidget.setMaximumSize(QtCore.QSize(800, 600))
+        self.listWidget.setObjectName("listWidget")
+        self.pushButton_2 = QtWidgets.QPushButton(self.frame)
+        self.pushButton_2.setGeometry(QtCore.QRect(50, 30, 281, 23))
+        self.pushButton_2.setStyleSheet("background-color: rgb(255, 255, 127);")
+        self.pushButton_2.setText("")
+        self.pushButton_2.setObjectName("pushButton_2")
+        self.pushButton_3 = QtWidgets.QPushButton(self.frame)
+        self.pushButton_3.setGeometry(QtCore.QRect(50, 60, 281, 23))
+        self.pushButton_3.setStyleSheet("background-color: rgb(255, 255, 127);")
+        self.pushButton_3.setText("")
+        self.pushButton_3.setObjectName("pushButton_3")
+        self.pushButton_4 = QtWidgets.QPushButton(self.frame)
+        self.pushButton_4.setGeometry(QtCore.QRect(50, 90, 281, 23))
+        self.pushButton_4.setStyleSheet("background-color: rgb(255, 255, 127);\n"
+"")
+        self.pushButton_4.setText("")
+        self.pushButton_4.setObjectName("pushButton_4")
+        self.pushButton_5 = QtWidgets.QPushButton(self.frame)
+        self.pushButton_5.setGeometry(QtCore.QRect(50, 120, 281, 23))
+        self.pushButton_5.setStyleSheet("background-color: rgb(255, 255, 127);")
+        self.pushButton_5.setObjectName("pushButton_5")
+        self.pushButton = QtWidgets.QPushButton(self.frame)
+        self.pushButton.setGeometry(QtCore.QRect(70, 200, 75, 23))
+        self.pushButton.setStyleSheet("background-color:rgb(255, 0, 0);")
+        self.pushButton.setObjectName("pushButton")
+        self.pushButton_6 = QtWidgets.QPushButton(self.frame)
+        self.pushButton_6.setGeometry(QtCore.QRect(240, 200, 75, 23))
+        self.pushButton_6.setStyleSheet("background-color:rgb(5, 187, 0);")
+        self.pushButton_6.setObjectName("pushButton_6")
+        self.gridLayout.addWidget(self.frame, 0, 0, 1, 1)
+        self.verticalLayout.addLayout(self.gridLayout)
+
+        self.retranslateUi(Form)
+        QtCore.QMetaObject.connectSlotsByName(Form)
+
+    def retranslateUi(self, Form):
+        _translate = QtCore.QCoreApplication.translate
+        Form.setWindowTitle(_translate("Form", "Form"))
+        self.label.setText(_translate("Form", "سبد خرید"))
+        self.pushButton_5.setText(_translate("Form", "..."))
+        self.pushButton.setText(_translate("Form", "انصراف"))
+        self.pushButton_6.setText(_translate("Form", "تایید"))
+
+
+
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
