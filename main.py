@@ -602,9 +602,10 @@ class Seller:
                         product_id = random.randint(100000, 1000000)  # generating a new random product id
                 # we have successfully iterated whole products and we have make sure that the product id is unique
                 # now that the product id is unique we generate the new product object from Products class
-                new_product = Product(product_name, product_quantity, product_id, self.seller_id, product_price)
-                self.products.append(new_product)  # append new product to seller products list
-                flag = False  # now that the product is added successfully we change the flag to stop while loop
+                if Store.approve_product(product_name, product_quantity, product_id, self.seller_id, product_price):
+                    new_product = Product(product_name, product_quantity, product_id, self.seller_id, product_price)
+                    self.products.append(new_product)  # append new product to seller products list
+                    flag = False  # now that the product is added successfully we change the flag to stop while loop
 
         # if gets rejected:
         except PermissionError:
