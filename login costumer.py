@@ -240,6 +240,42 @@ class Ui_Form(object):
 
 
 
+#Final registration
+class Ui_Form(object):
+    def setupUi(self, Form):
+        Form.setObjectName("Form")
+        Form.resize(400, 300)
+        Form.setStyleSheet("background-color: qlineargradient(spread:pad, x1:1, y1:1, x2:1, y2:0, stop:0 rgba(0, 0, 85, 255), stop:1 rgba(255, 255, 255, 255));")
+        self.label = QtWidgets.QLabel(Form)
+        self.label.setGeometry(QtCore.QRect(70, 60, 271, 41))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.label.setFont(font)
+        self.label.setStyleSheet("background-color:rgb(255, 255 ,255);")
+        self.label.setAlignment(QtCore.Qt.AlignCenter)
+        self.label.setObjectName("label")
+        self.pushButton = QtWidgets.QPushButton(Form)
+        self.pushButton.setGeometry(QtCore.QRect(100, 170, 75, 23))
+        self.pushButton.setStyleSheet("background-color:rgb(255, 0, 0);\n"
+"")
+        self.pushButton.setObjectName("pushButton")
+        self.pushButton_2 = QtWidgets.QPushButton(Form)
+        self.pushButton_2.setGeometry(QtCore.QRect(230, 170, 75, 23))
+        self.pushButton_2.setStyleSheet("background-color:rgb(5, 187, 0);")
+        self.pushButton_2.setObjectName("pushButton_2")
+
+        self.retranslateUi(Form)
+        QtCore.QMetaObject.connectSlotsByName(Form)
+
+    def retranslateUi(self, Form):
+        _translate = QtCore.QCoreApplication.translate
+        Form.setWindowTitle(_translate("Form", "Form"))
+        self.label.setText(_translate("Form", "آیا میخواهید خرید خود را ثبت نهایی کنید؟"))
+        self.pushButton.setText(_translate("Form", "خیر"))
+        self.pushButton_2.setText(_translate("Form", "بله"))
+
+
+
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
