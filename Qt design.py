@@ -281,7 +281,7 @@ class Ui_MainWindow(object):
         self.pushButton_2.setText(_translate("MainWindow", "انصراف"))
 
 
-#
+#cart page
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -361,7 +361,7 @@ class Ui_MainWindow(object):
         self.pushButton_2.setText(_translate("MainWindow", "تایید"))
         self.pushButton.setText(_translate("MainWindow", "انصراف"))
 
-        
+
 #payment type
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
