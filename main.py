@@ -2069,7 +2069,31 @@ class Ui_MainWindow(object):
         self.label_7.setText(_translate("MainWindow", "جنس محکمی داره شفاف بود کوچیکه ولی کار راه اندازه. برا مرتب چیدن وسایل آرایشی کوچیک خوبه"))
         self.pushButton_2.setText(_translate("MainWindow", "دیدگاه و نظر شما کاربر عزیز"))
 
+#Thanks for buying page
+class Ui_MainWindow(object):
+    def setupUi(self, MainWindow):
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(800, 600)
+        MainWindow.setStyleSheet("background-color: qlineargradient(spread:pad, x1:1, y1:1, x2:1, y2:0, stop:0 rgba(0, 0, 85, 255), stop:1 rgba(255, 255, 255, 255));")
+        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setObjectName("centralwidget")
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setGeometry(QtCore.QRect(150, 180, 501, 151))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        self.label.setFont(font)
+        self.label.setStyleSheet("background-color: rgb(255, 255, 127);")
+        self.label.setAlignment(QtCore.Qt.AlignCenter)
+        self.label.setObjectName("label")
+        MainWindow.setCentralWidget(self.centralwidget)
 
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+    def retranslateUi(self, MainWindow):
+        _translate = QtCore.QCoreApplication.translate
+        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.label.setText(_translate("MainWindow", "از خرید شما متشکریم "))
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
