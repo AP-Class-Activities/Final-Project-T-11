@@ -281,6 +281,64 @@ class Ui_MainWindow(object):
         self.pushButton_2.setText(_translate("MainWindow", "انصراف"))
 
 
+#Final registration of purchase
+class Ui_MainWindow(object):
+    def setupUi(self, MainWindow):
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(800, 600)
+        MainWindow.setStyleSheet("background-color: qlineargradient(spread:pad, x1:1, y1:1, x2:1, y2:0, stop:0 rgba(0, 0, 85, 255), stop:1 rgba(255, 255, 255, 255));")
+        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setObjectName("centralwidget")
+        self.radioButton = QtWidgets.QRadioButton(self.centralwidget)
+        self.radioButton.setGeometry(QtCore.QRect(310, 270, 181, 41))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.radioButton.setFont(font)
+        self.radioButton.setLayoutDirection(QtCore.Qt.RightToLeft)
+        self.radioButton.setStyleSheet("background-color:rgb(217, 255, 255);\n"
+"")
+        self.radioButton.setObjectName("radioButton")
+        self.radioButton_2 = QtWidgets.QRadioButton(self.centralwidget)
+        self.radioButton_2.setGeometry(QtCore.QRect(310, 340, 181, 41))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.radioButton_2.setFont(font)
+        self.radioButton_2.setLayoutDirection(QtCore.Qt.RightToLeft)
+        self.radioButton_2.setStyleSheet("background-color:rgb(217, 255, 255);")
+        self.radioButton_2.setObjectName("radioButton_2")
+        self.radioButton_3 = QtWidgets.QRadioButton(self.centralwidget)
+        self.radioButton_3.setGeometry(QtCore.QRect(310, 410, 181, 41))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.radioButton_3.setFont(font)
+        self.radioButton_3.setLayoutDirection(QtCore.Qt.RightToLeft)
+        self.radioButton_3.setStyleSheet("background-color:rgb(217, 255, 255);")
+        self.radioButton_3.setObjectName("radioButton_3")
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setGeometry(QtCore.QRect(200, 140, 401, 81))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.label.setFont(font)
+        self.label.setStyleSheet("background-color:rgb(217, 255, 255);")
+        self.label.setAlignment(QtCore.Qt.AlignCenter)
+        self.label.setObjectName("label")
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        self.statusbar.setObjectName("statusbar")
+        MainWindow.setStatusBar(self.statusbar)
+
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+    def retranslateUi(self, MainWindow):
+        _translate = QtCore.QCoreApplication.translate
+        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.radioButton.setText(_translate("MainWindow", "پرداخت آنلاین"))
+        self.radioButton_2.setText(_translate("MainWindow", "پرداخت در محل"))
+        self.radioButton_3.setText(_translate("MainWindow", "پرداخت با کارت هدیه"))
+        self.label.setText(_translate("MainWindow", "نحوه ی پرداخت را انتخاب کنید:"))
+
+
 # If seller has already been a member, enter this page and enter your username and password
 f = open('database.txt', 'r+')
 username = input()
