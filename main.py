@@ -785,7 +785,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-         f = open('database.txt', 'r+')
+        f = open('database.txt', 'r+')
         username = input()
         password = input()
         s = f.write("\n"+username+" "+password)
