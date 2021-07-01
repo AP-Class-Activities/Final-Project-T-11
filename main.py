@@ -10,6 +10,20 @@ store_cash_desk = dict()
 gift_cards = dict()
 
 
+def is_gift_card_valid(code, costumer_id, product):
+    date_check = False
+    if datetime.date.today() < gift_cards[code][0]:
+        date_check = True
+    costumer_check = False
+    product_check = False
+    for detail in gift_cards.values():
+        if costumer_id in detail[1].keys():
+            costumer_check = True
+        if product in detail[2]:
+            product_check = True
+    return date_check and costumer_check and product_check
+
+
 class Costumer:
 
     def __init__(self, name, last_name, address, phone_number, email=None):
