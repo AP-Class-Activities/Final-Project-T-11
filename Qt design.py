@@ -281,7 +281,7 @@ class Ui_MainWindow(object):
         self.pushButton_2.setText(_translate("MainWindow", "انصراف"))
 
 
-#Final registration of purchase
+#payment type
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -337,6 +337,46 @@ class Ui_MainWindow(object):
         self.radioButton_2.setText(_translate("MainWindow", "پرداخت در محل"))
         self.radioButton_3.setText(_translate("MainWindow", "پرداخت با کارت هدیه"))
         self.label.setText(_translate("MainWindow", "نحوه ی پرداخت را انتخاب کنید:"))
+
+
+#Final registration of the purchase
+class Ui_MainWindow(object):
+    def setupUi(self, MainWindow):
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(800, 600)
+        MainWindow.setStyleSheet("background-color: qlineargradient(spread:pad, x1:1, y1:1, x2:1, y2:0, stop:0 rgba(0, 0, 85, 255), stop:1 rgba(255, 255, 255, 255));")
+        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setObjectName("centralwidget")
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setGeometry(QtCore.QRect(200, 150, 391, 91))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.label.setFont(font)
+        self.label.setStyleSheet("background-color:rgb(255, 255, 255);")
+        self.label.setAlignment(QtCore.Qt.AlignCenter)
+        self.label.setObjectName("label")
+        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton.setGeometry(QtCore.QRect(260, 340, 91, 41))
+        self.pushButton.setStyleSheet("background-color:rgb(255, 0, 0);")
+        self.pushButton.setObjectName("pushButton")
+        self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_2.setGeometry(QtCore.QRect(440, 340, 91, 41))
+        self.pushButton_2.setStyleSheet("background-color:rgb(5, 187, 0);")
+        self.pushButton_2.setObjectName("pushButton_2")
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        self.statusbar.setObjectName("statusbar")
+        MainWindow.setStatusBar(self.statusbar)
+
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+    def retranslateUi(self, MainWindow):
+        _translate = QtCore.QCoreApplication.translate
+        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.label.setText(_translate("MainWindow", "آیا میخواهید خرید خود را ثبت نهایی کنید؟"))
+        self.pushButton.setText(_translate("MainWindow", "خیر"))
+        self.pushButton_2.setText(_translate("MainWindow", "بله"))
 
 
 # If seller has already been a member, enter this page and enter your username and password
