@@ -212,6 +212,89 @@ class Costumer:
         # adding costumer comment to the product's comments records.
         products[product_name][3][self.costumer_id] = costumer_comment
 
+
+#The menu that the customer chooses from which category he wants to buy
+class Ui_MainWindow(object):
+    def setupUi(self, MainWindow):
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(800, 600)
+        MainWindow.setStyleSheet("background-color: rgb(170, 170, 255);")
+        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setObjectName("centralwidget")
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setGeometry(QtCore.QRect(330, 10, 131, 81))
+        font = QtGui.QFont()
+        font.setPointSize(16)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label.setFont(font)
+        self.label.setObjectName("label")
+        self.label_2 = QtWidgets.QLabel(self.centralwidget)
+        self.label_2.setGeometry(QtCore.QRect(356, 130, 211, 71))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.label_2.setFont(font)
+        self.label_2.setObjectName("label_2")
+        self.checkBox = QtWidgets.QCheckBox(self.centralwidget)
+        self.checkBox.setGeometry(QtCore.QRect(430, 220, 70, 17))
+        self.checkBox.setObjectName("checkBox")
+        self.checkBox_2 = QtWidgets.QCheckBox(self.centralwidget)
+        self.checkBox_2.setGeometry(QtCore.QRect(430, 260, 101, 17))
+        self.checkBox_2.setObjectName("checkBox_2")
+        self.checkBox_3 = QtWidgets.QCheckBox(self.centralwidget)
+        self.checkBox_3.setGeometry(QtCore.QRect(430, 300, 111, 17))
+        self.checkBox_3.setObjectName("checkBox_3")
+        self.checkBox_4 = QtWidgets.QCheckBox(self.centralwidget)
+        self.checkBox_4.setGeometry(QtCore.QRect(430, 350, 61, 17))
+        self.checkBox_4.setObjectName("checkBox_4")
+        self.checkBox_5 = QtWidgets.QCheckBox(self.centralwidget)
+        self.checkBox_5.setGeometry(QtCore.QRect(430, 400, 111, 17))
+        self.checkBox_5.setObjectName("checkBox_5")
+        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton.setGeometry(QtCore.QRect(370, 490, 75, 23))
+        self.pushButton.setStyleSheet("background-color: rgb(0, 255, 0);")
+        self.pushButton.setObjectName("pushButton")
+        self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_2.setGeometry(QtCore.QRect(170, 490, 75, 23))
+        self.pushButton_2.setStyleSheet("background-color: rgb(255, 0, 0);")
+        self.pushButton_2.setObjectName("pushButton_2")
+        self.label_3 = QtWidgets.QLabel(self.centralwidget)
+        self.label_3.setGeometry(QtCore.QRect(70, 400, 351, 16))
+        self.label_3.setStyleSheet("background-color: rgb(255, 0, 0);\n"
+"background-color: rgb(255, 85, 0);")
+        self.label_3.setObjectName("label_3")
+        self.label_4 = QtWidgets.QLabel(self.centralwidget)
+        self.label_4.setGeometry(QtCore.QRect(16, 10, 291, 291))
+        self.label_4.setText("")
+        self.label_4.setPixmap(QtGui.QPixmap("index2.jpg"))
+        self.label_4.setObjectName("label_4")
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
+        self.menubar.setObjectName("menubar")
+        MainWindow.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        self.statusbar.setObjectName("statusbar")
+        MainWindow.setStatusBar(self.statusbar)
+
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+    def retranslateUi(self, MainWindow):
+        _translate = QtCore.QCoreApplication.translate
+        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.label.setText(_translate("MainWindow", "خرید محصول"))
+        self.label_2.setText(_translate("MainWindow", "قصد خرید چه کالایی را دارید؟"))
+        self.checkBox.setText(_translate("MainWindow", "مواد غذایی"))
+        self.checkBox_2.setText(_translate("MainWindow", "میوه و سبزیجات"))
+        self.checkBox_3.setText(_translate("MainWindow", "آرایشی و بهداشتی"))
+        self.checkBox_4.setText(_translate("MainWindow", "پوشاک"))
+        self.checkBox_5.setText(_translate("MainWindow", "کالا های تخفیف دار"))
+        self.pushButton.setText(_translate("MainWindow", "تایید"))
+        self.pushButton_2.setText(_translate("MainWindow", "انصراف"))
+        self.label_3.setText(_translate("MainWindow", "توجه داشته باشید کالا های دارای تخفیف دوشنبه های آخر ماه وجود دارد"))
+
+
 # If you have already been a member, enter this page and enter your username and password
 f = open('database.txt', 'r+')
 username = input()
@@ -300,7 +383,7 @@ class Ui_MainWindow(object):
 "background-color: rgb(255, 255, 127);\n"
 "background-color: rgb(255, 255, 127);\n"
 "background-color: rgb(170, 170, 255);")
-        MainWindow = QtWidgets.QMainWindow(mainwindow)
+        MainWindow = QtWidgets.QMainWindow(MainWindow)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.label = QtWidgets.QLabel(self.centralwidget)
@@ -872,7 +955,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.pushButton.setText(_translate("MainWindow", "میوه و سبزیجات"))
         self.pushButton_2.setText(_translate("MainWindow", "مواد غذایی"))
         self.pushButton_3.setText(_translate("MainWindow", "پوشاک"))
@@ -1320,7 +1403,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label.setText(_translate("MainWindow", " پوشاک :"))
         self.label_2.setText(_translate("MainWindow", "قیمت "))
         self.label_3.setText(_translate("MainWindow", "نام محصول "))
