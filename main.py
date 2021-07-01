@@ -283,7 +283,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label_4.setText(_translate("MainWindow", "رمز ورود"))
+        self.label_4.setText(_translate("MainWindow", " رمز ورود مشتری"))
         self.pushButton.setText(_translate("MainWindow", "تایید"))
         self.pushButton_2.setText(_translate("MainWindow", "انصراف"))
         self.label_2.setText(_translate("MainWindow", "نام کاربری"))
@@ -597,7 +597,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label_4.setText(_translate("MainWindow", "رمز ورود"))
+        self.label_4.setText(_translate("MainWindow", "رمز ورود فروشنده"))
         self.pushButton.setText(_translate("MainWindow", "تایید"))
         self.pushButton_2.setText(_translate("MainWindow", "انصراف"))
         self.label_2.setText(_translate("MainWindow", "نام کاربری"))
@@ -1326,7 +1326,7 @@ class Ui_MainWindow(object):
         self.label_3.setText(_translate("MainWindow", "نام محصول "))
         self.pushButton_6.setText(_translate("MainWindow", "بازگشت"))
 
-        
+
 class Product:
 
     def __init__(self, product, quantity, product_id, sellers_id,color, price):
