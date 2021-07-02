@@ -344,7 +344,7 @@ class Store:
               "shopping history: {}\n".format(costumer_details[8]))
 
     # method to calculate approximate shipping time
-    def shipping_time_calculator(self, costumer_id, seller_id):
+    def shopping_time_calculator(self, costumer_id, seller_id):
         print("your address is: {}".format(self.address))
         print("the costumer address is: {}".format(costumers[costumer_id][2]))
         distance_to_costumer = int(input("estimate the approximate time from inventory to costumer in minutes: "))
@@ -399,11 +399,3 @@ class product:
            else:
                 return price * number_to_be_bought
 
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec_())
