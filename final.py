@@ -1,8 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-from costumer_class.py import *
-from store_class.py import *
-from seller_class.py import *
 
 
 
@@ -250,6 +247,12 @@ class Ui_login(object):
 
         self.retranslateUi(login)
         QtCore.QMetaObject.connectSlotsByName(login)
+
+        #f = open('database.txt', 'r+')
+        #username = input()
+        #password = input()
+        #s = f.write("\n"+username+" "+password)
+        #f.close()
         
     def tocategory(self):
         self.category = QtWidgets.QMainWindow()
@@ -326,6 +329,12 @@ class Ui_login2(object):
 
         self.retranslateUi(login)
         QtCore.QMetaObject.connectSlotsByName(login)
+
+        #f = open('database.txt', 'r+')
+        #username = input()
+        #password = input()
+        #s = f.write("\n"+username+" "+password)
+        #f.close()
         
     def tocategories(self):
         self.categories = QtWidgets.QMainWindow()
@@ -448,6 +457,25 @@ class Ui_start(object):
 
         self.retranslateUi(start)
         QtCore.QMetaObject.connectSlotsByName(start)
+
+        #f = open('database.txt', 'r+')
+        #password = input()
+        #password = input()
+        #s = f.readlines()
+        #s = [j for i in s for j in i.split()]
+        #emkanSabtnam = True
+        #for k in range(0, len(s), 2):
+        #    if username == s[k]:
+        #        emkanSabtnam = False
+        #        print('in name karbari tekrari ast!')
+        #    break
+        #f.close()
+        #if emkanSabtnam:
+        #    f = open('database.txt', 'a+')
+        #    f.write(f'{username} {password}\n')
+        #    print('sabtname ba mofaghiat anjam shod!')
+        #    f.close()
+
 
 
     def tocategory(self):
@@ -578,6 +606,25 @@ class Ui_starts(object):
 
         self.retranslateUi(starts)
         QtCore.QMetaObject.connectSlotsByName(starts)
+
+        #f = open('database.txt', 'r+')
+        #password = input()
+        #password = input()
+        #s = f.readlines()
+        #s = [j for i in s for j in i.split()]
+        #emkanSabtnam = True
+        #for k in range(0, len(s), 2):
+        #    if username == s[k]:
+        #        emkanSabtnam = False
+        #        print('in name karbari tekrari ast!')
+        #    break
+        #f.close()
+        #if emkanSabtnam:
+        #    f = open('database.txt', 'a+')
+        #    f.write(f'{username} {password}\n')
+        #    print('sabtname ba mofaghiat anjam shod!')
+        #    f.close()
+
 
     
     
