@@ -1,12 +1,14 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 import datetime
 import random
+
 sellers = dict()
 suspended_sellers = list()
 products = dict()
 costumers = dict()
 store_cash_desk = dict()
 gift_cards = dict()
+
 
 #To choose you are seller or customer
 class Ui_MainWindow(object):
